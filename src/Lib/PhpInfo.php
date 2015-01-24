@@ -19,7 +19,8 @@ class PhpInfo
 {
     /**
      * Output the PHP configuration.
-     * @param int $what {@link http://php.net/manual/en/function.phpinfo.php Constant} used to customize the output.
+     * A {@link http://php.net/manual/en/function.phpinfo.php constant} can be used to filter the output.
+     * @param int $what Constant used to customize the output.
      * @return bool TRUE on success, FALSE otherwise.
      */
     public static function vomit($what = INFO_ALL)
