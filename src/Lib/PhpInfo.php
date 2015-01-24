@@ -11,7 +11,8 @@
 namespace Jul\Lib;
 
 /**
- * PHP Info
+ * PHP info utility
+ *
  * Vomit the PHP configuration on the standard output.
  * @author Julien <youlweb@hotmail.com>
  */
@@ -19,6 +20,7 @@ class PhpInfo
 {
     /**
      * Output the PHP configuration.
+     *
      * A {@link http://php.net/manual/en/function.phpinfo.php constant} can be used to filter the output.
      * @param int $what Constant used to customize the output.
      * @return bool TRUE on success, FALSE otherwise.
