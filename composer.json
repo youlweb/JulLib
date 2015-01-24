@@ -1,0 +1,12 @@
+{
+  "name": "jul/lib",
+  "description": "A set of frequently used PHP tools.",
+  "type": "library",
+  "autoload": {
+    "psr-0": {
+      "Jul\\Lib": "src"
+    }
+  },
+  "require": {
+  }
+}
