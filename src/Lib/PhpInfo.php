@@ -12,17 +12,18 @@ namespace Jul\Lib;
 
 /**
  * PHP Info
- * Display the PHP configuration on the standard output.
+ * Vomit the PHP configuration on the standard output.
  * @author Julien <youlweb@hotmail.com>
  */
 class PhpInfo
 {
     /**
-     * Display the PHP configuration.
-     * @return bool
+     * Output the PHP configuration.
+     * @param int $what {@link http://php.net/manual/en/function.phpinfo.php Constant} used to customize the output.
+     * @return bool TRUE on success, FALSE otherwise.
      */
-    public function output()
+    public static function vomit($what = INFO_ALL)
     {
-        return phpinfo();
+        return phpinfo($what);
     }
 }
