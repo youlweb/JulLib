@@ -2,11 +2,23 @@
   "name": "jul/lib",
   "description": "A set of frequently used PHP tools.",
   "type": "library",
+  "homepage": "https://github.com/youlweb/JulLib",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Julien",
+      "email": "youlweb@hotmail.com",
+      "homepage": "https://github.com/youlweb",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "youlweb@hotmail.com"
+  },
   "autoload": {
-    "psr-0": {
-      "Jul\\Lib": "src"
+    "psr-4": {
+      "Jul\\": "src/"
     }
   },
-  "require": {
-  }
+  "require": {}
 }
