@@ -16,7 +16,7 @@ namespace Jul\Lib\Math\Vector;
  * This implementation consists of an array of floats, on which vector operations can be applied.
  * @author Julien <youlweb@hotmail.com>
  */
-interface VectorInterface
+interface VectorInterface extends \Countable, \Iterator
 {
     /**
      * Add a vector's values to the current vector.
@@ -55,4 +55,11 @@ interface VectorInterface
      * @return self
      */
     public function subtract(VectorInterface $vector);
+
+    /**
+     * Return the sum of the vector's values.
+     *
+     * @return float
+     */
+    public function sum();
 }
