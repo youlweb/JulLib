@@ -3,7 +3,7 @@
 <phpunit colors="true">
     <testsuites>
         <testsuite name="JulLib test suite">
-            <directory>src/Tests</directory>
+            <directory>src/Lib/Tests</directory>
         </testsuite>
     </testsuites>
 </phpunit>
