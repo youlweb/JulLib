@@ -8,19 +8,14 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Jul\Lib\Tests\Sys;
-
-use Jul\Lib\Sys\PhpInfo;
+namespace Jul\Lib\Math\Vector;
 
 /**
+ * Generic vector exception.
+ *
  * @author Julien <youlweb@hotmail.com>
  */
-class PhpInfoTest extends \PHPUnit_Framework_TestCase
+class VectorException extends \Exception
 {
-    public function testVomit()
-    {
-        ob_start();
-        $this->assertTrue(PhpInfo::vomit());
-        ob_end_clean();
-    }
+
 }

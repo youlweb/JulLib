@@ -22,6 +22,7 @@ interface VectorInterface extends \Countable, \Iterator
      * Add a vector's values to the current vector.
      *
      * @param VectorInterface $vector
+     * @throw VectorException If the added vector has a different length.
      * @return self
      */
     public function add(VectorInterface $vector);

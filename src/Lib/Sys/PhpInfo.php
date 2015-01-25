@@ -11,7 +11,7 @@
 namespace Jul\Lib\Sys;
 
 /**
- * PHP info utility
+ * PHP info utility.
  *
  * Vomit the PHP configuration on the standard output.
  * @author Julien <youlweb@hotmail.com>
