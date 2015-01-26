@@ -33,20 +33,22 @@ interface CollectionInterface extends ArrayAccess, Countable, Iterator
     public function clear();
 
     /**
+     * Return the object corresponding to the input key.
+     *
+     * This operation is softer than ArrayAccess->offsetGet(), it returns an exception on invalid key.
+     * @param int $key
+     * @return mixed Object.
+     * @throws CollectionException On invalid key.
+     */
+    public function get($key);
+
+    /**
      * Check the collection for an object.
      *
      * @param mixed $object
      * @return boolean
      */
-    public function contains($object);
-
-    /**
-     * Return the object corresponding to the input key.
-     *
-     * @param integer $key
-     * @return mixed Object.
-     */
-    public function get($key);
+    public function has($object);
 
     /**
      * Check if any object in the collection responds to a predicate.
@@ -66,7 +68,7 @@ interface CollectionInterface extends ArrayAccess, Countable, Iterator
     /**
      * Return the last object of the collection.
      *
-     * @return mixed Object.
+     * @return mixed|boolean Object or FALSE if the collection is empty.
      */
     public function last();
 
@@ -83,6 +85,7 @@ interface CollectionInterface extends ArrayAccess, Countable, Iterator
      *
      * @param mixed $object
      * @return self
+     * @throws CollectionException When the object is not found.
      */
     public function remove($object);
 }
