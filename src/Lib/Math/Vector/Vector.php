@@ -32,9 +32,15 @@ class Vector implements VectorInterface
      * Initialize the vector with an array of floats.
      *
      * @param float[] $vector
+     * @throws VectorException If the array provided contains non-numeric values.
      */
     public function __construct(array $vector)
     {
+        foreach ($vector as $value) {
+            if (!is_numeric($value)) {
+                throw new VectorException('The input array contains non-numeric values.');
+            }
+        }
         $this->_vector = $vector;
     }
 
@@ -43,9 +49,7 @@ class Vector implements VectorInterface
      */
     public function add(VectorInterface $vector)
     {
-        if ($vector->count() !== $this->count()) {
-            throw new VectorException('Vectors of different length cannot be added together.');
-        }
+        $this->checkInputVectorLength($vector);
         foreach ($vector as $key => $value) {
             $this->_vector[$key] += $value;
         }
@@ -72,9 +76,15 @@ class Vector implements VectorInterface
     /**
      * {@inheritDoc}
      */
-    public function getMagnitude()
+    public function dotProduct(VectorInterface $vector)
     {
+        $length = $this->checkInputVectorLength($vector);
+        $products = array_fill(0, $length, 0);
+        foreach ($vector as $key => $value) {
+            $products[$key] = $value * $this->_vector[$key];
+        }
 
+        return array_sum($products);
     }
 
     /**
@@ -96,9 +106,13 @@ class Vector implements VectorInterface
     /**
      * {@inheritDoc}
      */
-    public function multiply(VectorInterface $vector)
+    public function magnitude()
     {
-
+        $sum = 0;
+        foreach ($this as $value) {
+            $sum += pow($value, 2);
+        }
+        return sqrt($sum);
     }
 
     /**
@@ -139,5 +153,21 @@ class Vector implements VectorInterface
     public function valid()
     {
         return array_key_exists($this->_current, $this->_vector);
+    }
+
+    /**
+     * Enforce that the input vector is the same length as this vector.
+     *
+     * @param VectorInterface $vector
+     * @return int Vector length.
+     * @throws VectorException If the input vector is of different length.
+     */
+    private function checkInputVectorLength(VectorInterface $vector)
+    {
+        $length = $this->count();
+        if ($vector->count() !== $length) {
+            throw new VectorException('This operation must be performed on vectors of identical length.');
+        }
+        return $length;
     }
 }

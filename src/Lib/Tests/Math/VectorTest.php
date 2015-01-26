@@ -17,6 +17,14 @@ use Jul\Lib\Math\Vector\Vector;
  */
 class VectorTest extends \PHPUnit_Framework_TestCase
 {
+    const EXCEPTION = 'Jul\Lib\Math\Vector\VectorException';
+
+    public function testConstructThrowsExceptionIfNonNumericValues()
+    {
+        $this->setExpectedException(self::EXCEPTION);
+        new Vector([3, 5, 'foo', 2]);
+    }
+
     public function testAdd()
     {
         $vector_1 = new Vector([5, 2.5, 4]);
@@ -24,11 +32,50 @@ class VectorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals([0, 5, 7], $vector_1->add($vector_2)->getVector());
     }
 
-    public function testAddThrowsExceptionWhenVectorsOfDifferentSize()
+    public function testAddThrowsExceptionIfVectorsOfDifferentLength()
     {
-        $this->setExpectedException('Jul\Lib\Math\Vector\VectorException');
+        $this->setExpectedException(self::EXCEPTION);
         $vector_1 = new Vector([5, 2.5, 4]);
         $vector_2 = new Vector([-5]);
         $vector_1->add($vector_2);
+    }
+
+    public function testCount()
+    {
+        $array = [5, 2.5, 4];
+        $vector = new Vector($array);
+        $this->assertEquals(count($array), $vector->count());
+    }
+
+    public function testCurrentKeyNextRewindValid()
+    {
+        $array = [5, 2.5, 4];
+        $vector = new Vector($array);
+        foreach ($vector as $key => $value) {
+            $this->assertEquals($array[$key], $value);
+        }
+        $vector->rewind();
+        $this->assertEquals(0, $vector->key());
+    }
+
+    public function testDotProduct()
+    {
+        $vector_1 = new Vector([5, 2.5, 4]);
+        $vector_2 = new Vector([8, 2, 6]);
+        $this->assertEquals(69, $vector_1->dotProduct($vector_2));
+    }
+
+    public function testDotProductThrowsExceptionIfVectorsOfDifferentLength()
+    {
+        $this->setExpectedException(self::EXCEPTION);
+        $vector_1 = new Vector([5, 2.5, 4]);
+        $vector_2 = new Vector([-5]);
+        $vector_1->dotProduct($vector_2);
+    }
+
+    public function testMagnitude()
+    {
+        $vector = new Vector([7, 5, 4]);
+        $this->assertEquals(9.5, round($vector->magnitude(), 1));
     }
 }

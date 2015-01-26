@@ -22,17 +22,19 @@ interface VectorInterface extends \Countable, \Iterator
      * Add a vector's values to the current vector.
      *
      * @param VectorInterface $vector
-     * @throw VectorException If the added vector has a different length.
      * @return self
+     * @throws VectorException If the input vector is of different length.
      */
     public function add(VectorInterface $vector);
 
     /**
-     * Return the magnitude of the vector.
+     * Return the dot product of a vector and the current vector.
      *
+     * @param VectorInterface $vector
      * @return float
+     * @throws VectorException If the input vector is of different length.
      */
-    public function getMagnitude();
+    public function dotProduct(VectorInterface $vector);
 
     /**
      * Return the vector as an array of float(s).
@@ -42,12 +44,11 @@ interface VectorInterface extends \Countable, \Iterator
     public function getVector();
 
     /**
-     * Multiply the vector by another vector.
+     * Return the magnitude of the vector.
      *
-     * @param VectorInterface $vector
-     * @return self
+     * @return float
      */
-    public function multiply(VectorInterface $vector);
+    public function magnitude();
 
     /**
      * Subtract a vector from the current vector.
