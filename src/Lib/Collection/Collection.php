@@ -11,9 +11,8 @@ namespace Jul\Lib\Collection;
 use Closure;
 
 /**
- * A set of object.
+ * An iterable set of object.
  *
- * This implementation holds object in a PHP array.
  * @author Julien <youlweb@hotmail.com>
  */
 class Collection implements CollectionInterface
@@ -73,7 +72,7 @@ class Collection implements CollectionInterface
     /** {@inheritDoc} */
     public function get($key)
     {
-        if (!$this->offsetExists($key)) {
+        if (!array_key_exists($key, $this->_objects)) {
             throw new CollectionException('The key ' . $key . ' is not valid.');
         }
         return $this->_objects[$key];
@@ -121,30 +120,6 @@ class Collection implements CollectionInterface
     }
 
     /** {@inheritDoc} */
-    public function offsetExists($offset)
-    {
-        return array_key_exists($offset, $this->_objects);
-    }
-
-    /** {@inheritDoc} */
-    public function offsetGet($offset)
-    {
-        return $this->_objects[$offset];
-    }
-
-    /** {@inheritDoc} */
-    public function offsetSet($offset, $value)
-    {
-        $this->_objects[$offset] = $value;
-    }
-
-    /** {@inheritDoc} */
-    public function offsetUnset($offset)
-    {
-        unset($this->_objects[$offset]);
-    }
-
-    /** {@inheritDoc} */
     public function remove($object)
     {
         $offset = array_search($object, $this->_objects, true);
@@ -162,8 +137,14 @@ class Collection implements CollectionInterface
     }
 
     /** {@inheritDoc} */
+    public function sort(Closure $function)
+    {
+        usort($this->_objects, $function);
+    }
+
+    /** {@inheritDoc} */
     public function valid()
     {
-        return $this->offsetExists($this->_current);
+        return array_key_exists($this->_current, $this->_objects);
     }
 }

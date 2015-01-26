@@ -8,14 +8,14 @@
  */
 namespace Jul\Lib\Collection;
 
-use ArrayAccess, Closure, Countable, Iterator;
+use Closure, Countable, Iterator;
 
 /**
- * A set of objects.
+ * An iterable set of objects.
  *
  * @author Julien <youlweb@hotmail.com>
  */
-interface CollectionInterface extends ArrayAccess, Countable, Iterator
+interface CollectionInterface extends Countable, Iterator
 {
     /**
      * Append an object to the collection.
@@ -88,4 +88,13 @@ interface CollectionInterface extends ArrayAccess, Countable, Iterator
      * @throws CollectionException When the object is not found.
      */
     public function remove($object);
+
+    /**
+     * Organize the collection according to a predicate.
+     *
+     * The closure works like {@link http://php.net/manual/en/function.usort.php usort}.
+     * @param callable $function
+     * @return self
+     */
+    public function sort(Closure $function);
 }
