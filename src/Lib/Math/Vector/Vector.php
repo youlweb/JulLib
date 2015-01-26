@@ -11,7 +11,7 @@ namespace Jul\Lib\Math\Vector;
 /**
  * A quantity having direction as well as magnitude.
  *
- * This implementation consists of an array of floats, on which vector operations can be applied.
+ * This implementation consists of an array of floats.
  * @author Julien <youlweb@hotmail.com>
  */
 class Vector implements VectorInterface
@@ -39,41 +39,32 @@ class Vector implements VectorInterface
                 throw new VectorException('The input array contains non-numeric values.');
             }
         }
-        $this->_vector = $vector;
+        $this->_vector = array_values($vector);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     public function add(VectorInterface $vector)
     {
         $this->checkInputVectorLength($vector);
         foreach ($vector as $key => $value) {
             $this->_vector[$key] += $value;
         }
-
         return $this;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     public function count()
     {
         return count($this->_vector);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     public function current()
     {
         return $this->_vector[$this->_current];
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     public function dotProduct(VectorInterface $vector)
     {
         $length = $this->checkInputVectorLength($vector);
@@ -81,29 +72,31 @@ class Vector implements VectorInterface
         foreach ($vector as $key => $value) {
             $products[$key] = $value * $this->_vector[$key];
         }
-
         return array_sum($products);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getVector()
+    /** {@inheritDoc} */
+    public function get()
     {
         return $this->_vector;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     public function key()
     {
         return $this->_current;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
+    public function invert()
+    {
+        foreach ($this as $key=>$value) {
+            $this->_vector[$key] = -$value;
+        }
+        return $this;
+    }
+
+    /** {@inheritDoc} */
     public function magnitude()
     {
         $sum = 0;
@@ -113,41 +106,44 @@ class Vector implements VectorInterface
         return sqrt($sum);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     public function next()
     {
         ++$this->_current;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     public function rewind()
     {
         $this->_current = 0;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
+    public function scale($factor)
+    {
+        foreach ($this as $key => $value) {
+            $this->_vector[$key] = $value * $factor;
+        }
+        return $this;
+    }
+
+    /** {@inheritDoc} */
     public function subtract(VectorInterface $vector)
     {
-
+        $this->checkInputVectorLength($vector);
+        foreach ($vector as $key=>$value) {
+            $this->_vector[$key] += -$value;
+        }
+        return $this;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     public function sum()
     {
-
+        return array_sum($this->_vector);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    /** {@inheritDoc} */
     public function valid()
     {
         return array_key_exists($this->_current, $this->_vector);

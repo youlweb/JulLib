@@ -25,10 +25,10 @@ interface VectorInterface extends \Countable, \Iterator
     public function add(VectorInterface $vector);
 
     /**
-     * Return the dot product of a vector and the current vector.
+     * Get the dot product of a vector and the current vector.
      *
      * @param VectorInterface $vector
-     * @return float
+     * @return float Dot product.
      * @throws VectorException If the input vector is of different length.
      */
     public function dotProduct(VectorInterface $vector);
@@ -38,14 +38,29 @@ interface VectorInterface extends \Countable, \Iterator
      *
      * @return float[]
      */
-    public function getVector();
+    public function get();
 
     /**
-     * Return the magnitude of the vector.
+     * Invert each value of the vector.
      *
-     * @return float
+     * @return self
+     */
+    public function invert();
+
+    /**
+     * Get the magnitude of the vector.
+     *
+     * @return float Magnitude.
      */
     public function magnitude();
+
+    /**
+     * Apply scaling to the vector.
+     *
+     * @param float $factor
+     * @return self
+     */
+    public function scale($factor);
 
     /**
      * Subtract a vector from the current vector.
