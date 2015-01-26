@@ -1,3 +1,3 @@
 JulLib
 ======
-A set of frequently used PHP tools.
+A set of frequently used PHP classes.

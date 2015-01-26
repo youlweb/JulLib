@@ -1,6 +1,6 @@
 {
   "name": "jul/lib",
-  "description": "A set of frequently used PHP tools.",
+  "description": "A set of frequently used PHP classes.",
   "type": "library",
   "homepage": "https://github.com/youlweb/JulLib",
   "license": "MIT",
