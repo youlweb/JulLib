@@ -55,6 +55,13 @@ interface VectorInterface extends \Countable, \Iterator
     public function magnitude();
 
     /**
+     * Get the average of the vector values.
+     *
+     * @return float Mean.
+     */
+    public function mean();
+
+    /**
      * Apply scaling to the vector.
      *
      * @param float $factor

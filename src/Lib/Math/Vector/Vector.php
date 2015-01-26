@@ -30,10 +30,13 @@ class Vector implements VectorInterface
      * Initialize the vector with an array of floats.
      *
      * @param float[] $vector
-     * @throws VectorException If the array provided contains non-numeric values.
+     * @throws VectorException If the input array is empty or contains non-numeric values.
      */
     public function __construct(array $vector)
     {
+        if (!count($vector)) {
+            throw new VectorException('The input array is empty');
+        }
         foreach ($vector as $value) {
             if (!is_numeric($value)) {
                 throw new VectorException('The input array contains non-numeric values.');
@@ -90,7 +93,7 @@ class Vector implements VectorInterface
     /** {@inheritDoc} */
     public function invert()
     {
-        foreach ($this as $key=>$value) {
+        foreach ($this as $key => $value) {
             $this->_vector[$key] = -$value;
         }
         return $this;
@@ -104,6 +107,12 @@ class Vector implements VectorInterface
             $sum += pow($value, 2);
         }
         return sqrt($sum);
+    }
+
+    /** {@inheritDoc} */
+    public function mean()
+    {
+        return $this->sum() / $this->count();
     }
 
     /** {@inheritDoc} */
@@ -131,7 +140,7 @@ class Vector implements VectorInterface
     public function subtract(VectorInterface $vector)
     {
         $this->checkInputVectorLength($vector);
-        foreach ($vector as $key=>$value) {
+        foreach ($vector as $key => $value) {
             $this->_vector[$key] += -$value;
         }
         return $this;

@@ -23,6 +23,12 @@ class VectorTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue([0 => 2, 1 => 8, 2 => 3.1] === $vector->get());
     }
 
+    public function testConstructThrowsExceptionIfEmptyInputArray()
+    {
+        $this->setExpectedException(self::EXCEPTION);
+        new Vector([]);
+    }
+
     public function testConstructThrowsExceptionIfNonNumericValues()
     {
         $this->setExpectedException(self::EXCEPTION);
@@ -89,6 +95,12 @@ class VectorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(9.5, round($vector->magnitude(), 1));
     }
 
+    public function testMean()
+    {
+        $vector = new Vector([9, 3, 19]);
+        $this->assertEquals(10.3, round($vector->mean(), 1));
+    }
+
     public function testScale()
     {
         $vector = new Vector([5, 1, -10]);
@@ -112,7 +124,7 @@ class VectorTest extends \PHPUnit_Framework_TestCase
 
     public function testSum()
     {
-        $vector=new Vector([3,7,5.5]);
+        $vector = new Vector([3, 7, 5.5]);
         $this->assertEquals(15.5, $vector->sum());
     }
 }
