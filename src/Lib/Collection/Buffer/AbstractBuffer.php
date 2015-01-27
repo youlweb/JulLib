@@ -36,10 +36,10 @@ class AbstractBuffer extends AbstractCollection
     /** {@inheritDoc} */
     public function add($object)
     {
-        parent::add($object);
-        if ($this->count() > $this->size()) {
+        if ($this->isWarm()) {
             $this->remove($this->first());
         }
+        parent::add($object);
     }
 
     /** {@inheritDoc} */
@@ -49,9 +49,9 @@ class AbstractBuffer extends AbstractCollection
     }
 
     /** {@inheritDoc} */
-    public function refresh()
+    public function isWarm()
     {
-
+        return $this->count() == $this->size();
     }
 
     /** {@inheritDoc} */

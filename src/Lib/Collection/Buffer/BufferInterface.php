@@ -25,11 +25,11 @@ interface BufferInterface extends CollectionInterface
     public function first();
 
     /**
-     * Perform a custom operation on the objects.
+     * Check whether the buffer is full.
      *
      * @return boolean
      */
-    public function refresh();
+    public function isWarm();
 
     /**
      * Return the max size of the buffer.
