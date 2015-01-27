@@ -11,7 +11,7 @@ namespace Jul\Lib\Collection\Buffer;
 use Jul\Lib\Collection\CollectionInterface;
 
 /**
- * A fixed size F.I.F.O object buffer.
+ * A fixed size, iterable F.I.F.O object buffer.
  *
  * @author Julien <youlweb@hotmail.com>
  */
@@ -21,6 +21,7 @@ interface BufferInterface extends CollectionInterface
      * Return the object in first position.
      *
      * @return mixed First object.
+     * @throws BufferException If the buffer is empty.
      */
     public function first();
 

@@ -4,6 +4,8 @@ A set of frequently used PHP classes.
 
 Collection
 ----------
+- [Buffer](https://github.com/youlweb/JulLib/blob/master/src/Lib/Collection/Buffer/BufferInterface.php)  
+A fixed size, iterable F.I.F.O object buffer.
 - [Collection](https://github.com/youlweb/JulLib/blob/master/src/Lib/Collection/CollectionInterface.php)  
 An iterable set of objects, complete with filter, sort, etc.
 

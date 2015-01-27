@@ -11,7 +11,7 @@ namespace Jul\Lib\Collection\Buffer;
 use Jul\Lib\Collection\AbstractCollection;
 
 /**
- * A fixed size F.I.F.O object buffer.
+ * A fixed size, iterable F.I.F.O object buffer.
  *
  * This implementation is based on the collection class.
  * @author Julien <youlweb@hotmail.com>
@@ -27,9 +27,13 @@ class AbstractBuffer extends AbstractCollection
      * Initialize the buffer with a maximum size.
      *
      * @param int $size
+     * @throws BufferException If the buffer size is too small.
      */
     public function __construct($size)
     {
+        if ($size <= 0) {
+            throw new BufferException('The minimum buffer size is 1');
+        }
         $this->_size = $size;
     }
 
@@ -45,6 +49,9 @@ class AbstractBuffer extends AbstractCollection
     /** {@inheritDoc} */
     public function first()
     {
+        if ($this->isEmpty()) {
+            throw new BufferException('Cannot get the first element of an empty buffer.');
+        }
         return $this->get(0);
     }
 

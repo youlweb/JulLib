@@ -9,11 +9,10 @@
 namespace Jul\Lib\Collection\Buffer;
 
 /**
- * A fixed size, iterable F.I.F.O object buffer.
+ * Generic buffer exception.
  *
- * This implementation is based on the collection class.
  * @author Julien <youlweb@hotmail.com>
  */
-class Buffer
+class BufferException extends \Exception
 {
 }
