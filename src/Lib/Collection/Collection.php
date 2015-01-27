@@ -66,16 +66,16 @@ class Collection implements CollectionInterface
     /** {@inheritDoc} */
     public function filter(Closure $function)
     {
-        return new static(array_filter($this->_objects, $function));
+        return new static(array_values(array_filter($this->_objects, $function)));
     }
 
     /** {@inheritDoc} */
-    public function get($key)
+    public function get($offset)
     {
-        if (!array_key_exists($key, $this->_objects)) {
-            throw new CollectionException('The key ' . $key . ' is not valid.');
+        if (!array_key_exists($offset, $this->_objects)) {
+            throw new CollectionException('The offset ' . $offset . ' is invalid.');
         }
-        return $this->_objects[$key];
+        return $this->_objects[$offset];
     }
 
     /** {@inheritDoc} */
@@ -87,8 +87,8 @@ class Collection implements CollectionInterface
     /** {@inheritDoc} */
     public function hasPredicate(Closure $function)
     {
-        foreach ($this as $key => $object) {
-            if (true === $function($key, $object)) {
+        foreach ($this as $object) {
+            if (true === $function($object)) {
                 return true;
             }
         }

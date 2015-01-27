@@ -9,7 +9,7 @@
 namespace Jul\Lib\Math\Vector;
 
 /**
- * A quantity having direction as well as magnitude.
+ * An iterable quantity having direction as well as magnitude.
  *
  * @author Julien <youlweb@hotmail.com>
  */

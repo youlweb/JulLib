@@ -9,7 +9,7 @@
 namespace Jul\Lib\Math\Vector;
 
 /**
- * A quantity having direction as well as magnitude.
+ * An iterable quantity having direction as well as magnitude.
  *
  * This implementation consists of an array of floats.
  * @author Julien <youlweb@hotmail.com>

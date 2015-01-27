@@ -59,10 +59,10 @@ class VectorTest extends \PHPUnit_Framework_TestCase
 
     public function testCurrentKeyNextRewindValid()
     {
-        $array = [5, 2.5, 4];
-        $vector = new Vector($array);
+        $vectors = [5, 2.5, 4];
+        $vector = new Vector($vectors);
         foreach ($vector as $key => $value) {
-            $this->assertEquals($array[$key], $value);
+            $this->assertEquals($vectors[$key], $value);
         }
         $vector->rewind();
         $this->assertEquals(0, $vector->key());
