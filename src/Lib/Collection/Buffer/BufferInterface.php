@@ -25,9 +25,17 @@ interface BufferInterface extends CollectionInterface
     public function first();
 
     /**
+     * Perform a custom operation on the objects.
+     *
+     * @return boolean
+     */
+    public function refresh();
+
+    /**
      * Return the max size of the buffer.
      *
      * @return int
      */
     public function size();
+
 }
