@@ -10,7 +10,7 @@ An iterable set of objects, complete with filter, sort, etc.
 Math
 ----
 - [Vector](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Vector/VectorInterface.php)  
-Perform common arithmetic operations on an array of floats.
+Perform common arithmetic operations on a vector of floats.
 
 Sys
 ---
