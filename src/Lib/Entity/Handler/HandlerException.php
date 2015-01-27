@@ -6,19 +6,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace Jul\Lib\Entity;
+namespace Jul\Lib\Entity\Handler;
 
 /**
- * A persistent object.
+ * Generic handler exception.
  *
  * @author Julien <youlweb@hotmail.com>
  */
-interface EntityInterface
+class HandlerException extends \Exception
 {
-    /**
-     * Return the unique entity identifier.
-     *
-     * @return string
-     */
-    public function getId();
 }
