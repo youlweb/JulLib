@@ -8,13 +8,14 @@
  */
 namespace Jul\Lib\Tests\Collection;
 
-use Jul\Lib\Collection\Collection, stdClass;
+use stdClass;
 
 /**
  * @author Julien <youlweb@hotmail.com>
  */
-class CollectionTest extends \PHPUnit_Framework_TestCase
+class AbstractCollectionTest extends \PHPUnit_Framework_TestCase
 {
+    const ABSTRACT_COLLECTION_CLASS = 'Jul\Lib\Collection\AbstractCollection';
     const EXCEPTION = 'Jul\Lib\Collection\CollectionException';
 
     public function testAdd()
@@ -136,11 +137,11 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @param array $objects
-     * @return Collection
+     * @return \PHPUnit_Framework_MockObject_MockObject
      */
     private function getNewCollection(array $objects = [])
     {
-        return new Collection($objects);
+        return $this->getMockForAbstractClass(self::ABSTRACT_COLLECTION_CLASS, [$objects]);
     }
 
     /**
