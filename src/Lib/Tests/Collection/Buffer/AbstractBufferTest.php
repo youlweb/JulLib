@@ -38,6 +38,7 @@ class AbstractBufferTest extends \PHPUnit_Framework_TestCase
         $buffer->add($object_1);
         $buffer->add($object_2);
         $this->assertEquals(1, $buffer->count());
+        $this->assertEquals($object_2, $buffer->first());
     }
 
     public function testFirst()

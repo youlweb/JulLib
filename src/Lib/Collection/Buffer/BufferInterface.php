@@ -13,6 +13,8 @@ use Jul\Lib\Collection\CollectionInterface;
 /**
  * A fixed size, iterable F.I.F.O object buffer.
  *
+ * The buffer implements a collection.
+ * @see Jul\Lib\Collection\CollecionInterface
  * @author Julien <youlweb@hotmail.com>
  */
 interface BufferInterface extends CollectionInterface

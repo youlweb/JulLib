@@ -11,7 +11,8 @@ namespace Jul\Lib\Collection\Buffer;
 /**
  * A fixed size, iterable F.I.F.O object buffer.
  *
- * This implementation is based on the collection class.
+ * The buffer implements a collection.
+ * @see Jul\Lib\Collection\CollecionInterface
  * @author Julien <youlweb@hotmail.com>
  */
 class Buffer
