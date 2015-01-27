@@ -11,7 +11,7 @@ namespace Jul\Lib\Entity\Handler;
 use Jul\Lib\Entity\EntityInterface;
 
 /**
- * Responsible for persistence operations on an entity.
+ * Responsible for persistence and retrieval of entities.
  *
  * @author Julien <youlweb@hotmail.com>
  */
