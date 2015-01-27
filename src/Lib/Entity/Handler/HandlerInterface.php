@@ -34,12 +34,12 @@ interface HandlerInterface
     public function delete(EntityInterface $entity);
 
     /**
-     * Get an entity.
+     * Load an entity.
      *
      * @param string $id
      * @return EntityInterface
      */
-    public function load($id);
+    public function get($id);
 
     /**
      * Persist an entity.
