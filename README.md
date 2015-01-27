@@ -2,6 +2,11 @@ JulLib
 ======
 A set of frequently used PHP classes.
 
+Collection
+----------
+- [Collection](https://github.com/youlweb/JulLib/blob/master/src/Lib/Collection/CollectionInterface.php)  
+An iterable set of objects, complete with filter, sort, etc.
+
 Math
 ----
 - [Vector](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Vector/VectorInterface.php)  
