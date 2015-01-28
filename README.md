@@ -21,7 +21,7 @@ Math
 - [Function](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Functions/FunctionInterface.php)  
 An object-oriented container for any mathematical function.
     - [Log](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Functions/Log.php)
-    Natural logarithm and log(base).
+    Natural logarithm and log(`base`).
 - [Vector](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Vector/VectorInterface.php)  
 Perform common arithmetic operations on a vector of floats.
 

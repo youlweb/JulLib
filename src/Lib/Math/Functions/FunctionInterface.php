@@ -11,7 +11,7 @@ namespace Jul\Lib\Math\Functions;
 /**
  * An object-oriented container for any mathematical function.
  *
- * The goal of these containers is to chain mathematical operations.
+ * The goal is to chain mathematical operations.
  * @author Julien <youlweb@hotmail.com>
  */
 interface FunctionInterface
@@ -19,8 +19,8 @@ interface FunctionInterface
     /**
      * Calculate f(x).
      *
-     * @param float $x
-     * @return float|float[] Single value or array.
+     * @param int|float $x
+     * @return int|float|float[] Result.
      */
     public function f($x);
 }
