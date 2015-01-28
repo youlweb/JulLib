@@ -19,6 +19,21 @@ namespace Jul\Lib\String\Property;
 class ShannonEntropy implements PropertyInterface
 {
     /**
+     * @var int
+     */
+    private $_precision;
+
+    /**
+     * The floating point precision can be determined.
+     *
+     * @param int $precision
+     */
+    public function __construct($precision = null)
+    {
+        $this->_precision = $precision;
+    }
+
+    /**
      * Return the average number of bits needed to encode the input string.
      *
      * @param string $string
@@ -32,6 +47,9 @@ class ShannonEntropy implements PropertyInterface
             $p = $v / $size;
             $h -= $p * log($p) / log(2);
         }
-        return $h;
+        if (null === $this->_precision) {
+            return $h;
+        }
+        return round($h, $this->_precision);
     }
 }
