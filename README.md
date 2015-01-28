@@ -25,6 +25,13 @@ An object-oriented container for any mathematical function.
 - [Vector](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Vector/VectorInterface.php)  
 Perform common arithmetic operations on a vector of floats.
 
+String
+------
+- [Property](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Property/PropertyInterface.php)  
+A property quantifies a particular aspect of a string.
+    - [Shannon entropy](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Property/ShannonEntropy.php)
+    Estimate the average minimum number of bits needed to encode a string.
+
 Sys
 ---
 - [PhpInfo](https://github.com/youlweb/JulLib/blob/master/src/Lib/Sys/PhpInfo.php)  
