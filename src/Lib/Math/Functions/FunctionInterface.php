@@ -22,5 +22,5 @@ interface FunctionInterface
      * @param float|float[] $x Single value or array.
      * @return float|float[] Single value or array.
      */
-    public function f($x);
+    public function f($x = null);
 }
