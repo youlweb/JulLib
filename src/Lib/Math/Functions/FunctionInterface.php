@@ -19,8 +19,8 @@ interface FunctionInterface
     /**
      * Calculate f(x).
      *
-     * @param float|float[] $x Single value or array.
+     * @param float $x
      * @return float|float[] Single value or array.
      */
-    public function f($x = null);
+    public function f($x);
 }
