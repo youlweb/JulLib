@@ -9,9 +9,9 @@
 namespace Jul\Lib\Math\Functions;
 
 /**
- * An object container for any mathematical function.
+ * An object-oriented container for any mathematical function.
  *
- * The goal of these containers is to chain mathematical operations dynamically.
+ * The goal of these containers is to chain mathematical operations.
  * @author Julien <youlweb@hotmail.com>
  */
 interface FunctionInterface
