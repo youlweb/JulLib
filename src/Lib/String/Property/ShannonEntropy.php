@@ -9,13 +9,21 @@
 namespace Jul\Lib\String\Property;
 
 /**
- * A measure of the complexity of a string.
+ * Shannon entropy property.
  *
+ * Allows to estimate the average minimum number of bits needed to encode
+ * a string of symbols based on the alphabet size and the frequency of
+ * the symbols. {@link http://www.shannonentropy.netmark.pl Read more}.
  * @author Julien <youlweb@hotmail.com>
  */
-class MetricEntropy implements PropertyInterface
+class ShannonEntropy implements PropertyInterface
 {
-    /** @inheritDoc */
+    /**
+     * Return the average number of bits needed to encode the input string.
+     *
+     * @param string $string
+     * @return float
+     */
     public function value($string)
     {
         $h = 0;
