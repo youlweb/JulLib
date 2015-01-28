@@ -11,6 +11,7 @@ namespace Jul\Lib\String\Property;
 /**
  * Quantify a particular aspect of a string.
  *
+ * Useful to build sets of tracked properties.
  * @author Julien <youlweb@hotmail.com>
  */
 interface PropertyInterface

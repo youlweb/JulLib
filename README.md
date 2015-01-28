@@ -19,7 +19,8 @@ Set of operations handling the persistence and retrieval of entities.
 Math
 ----
 - [Function](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Functions/FunctionInterface.php)  
-An object-oriented container for any mathematical function.
+An object-oriented container for mathematical functions.
+The goal of this architecture is to stack functions in composite objects.
     - [Log](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Functions/Log.php)
     Natural logarithm and log(`base`).
 - [Vector](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Vector/VectorInterface.php)  
@@ -29,8 +30,10 @@ String
 ------
 - [Property](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Property/PropertyInterface.php)  
 A property quantifies a particular aspect of a string.
+Useful to build sets of tracked properties.
     - [Shannon entropy](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Property/ShannonEntropy.php)
     Estimate the average minimum number of bits needed to encode a string.
+    One of the many aspects to consider to create strong passwords, or measure randomness in a string.
 
 Sys
 ---
