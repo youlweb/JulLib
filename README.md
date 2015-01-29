@@ -1,6 +1,9 @@
 JulLib
 ======
-A set of frequently used PHP classes.
+####A set of frequently used PHP classes.  
+Most links point to interfaces for clarity,
+but abstract classes and concrete implementations can be found in the same folder where relevant.  
+All tests are located in the [Tests](https://github.com/youlweb/JulLib/blob/master/src/Lib/Tests) folder.
 
 Collection
 ----------
