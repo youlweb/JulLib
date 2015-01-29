@@ -42,7 +42,6 @@ class ClosureFunction implements FunctionInterface
      */
     public function f($x)
     {
-        $arguments = func_get_args();
-        return call_user_func_array($this->_function, $arguments);
+        return call_user_func_array($this->_function, func_get_args());
     }
 }
