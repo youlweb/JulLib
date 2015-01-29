@@ -43,7 +43,7 @@ class ClosureProperty implements PropertyInterface
      * @param mixed $args,...
      * @return mixed
      */
-    public function value($string)
+    public function of($string)
     {
         return call_user_func_array($this->_function, func_get_args());
     }

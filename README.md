@@ -35,7 +35,7 @@ String
 ------
 - [Property](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Property/PropertyInterface.php)  
 A property quantifies a particular aspect of a string.
-Intended to create vector representations, such as word vectors.
+Useful to create vector representations, such as word vectors.
     - [Closure property](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Property/ClosureProperty.php)
     A user-defined function is used to calculate the property value.
     - [Shannon entropy](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Property/ShannonEntropy.php)
