@@ -21,6 +21,8 @@ Math
 - [Function](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Functions/FunctionInterface.php)  
 An object-oriented container for mathematical functions.
 The goal of this architecture is to stack functions in composite objects.
+    - [Closure function](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Functions/ClosureFunction.php)
+    A user-defined function is used to calculate the function output.
     - [Log](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Functions/Log.php)
     Natural logarithm and log(`base`).
 - [Vector](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Vector/VectorInterface.php)  
