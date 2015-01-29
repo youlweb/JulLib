@@ -11,7 +11,7 @@ An iterable set of objects, complete with filter, sort, etc.
 
 Entity
 ------
-- [EntityInterface](https://github.com/youlweb/JulLib/blob/master/src/Lib/Entity/EntityInterface.php)  
+- [Entity](https://github.com/youlweb/JulLib/blob/master/src/Lib/Entity/EntityInterface.php)  
 Definition of a persistent object.
 - [Handler](https://github.com/youlweb/JulLib/blob/master/src/Lib/Entity/Handler/HandlerInterface.php)  
 Set of operations handling the persistence and retrieval of entities.
@@ -30,7 +30,7 @@ String
 ------
 - [Property](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Property/PropertyInterface.php)  
 A property quantifies a particular aspect of a string.
-Useful to build sets of tracked properties.
+Intended to create vector representations, such as word vectors.
     - [Shannon entropy](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Property/ShannonEntropy.php)
     Estimate the average minimum number of bits needed to encode a string.
     One of the many aspects to consider to create strong passwords, or measure randomness in a string.
@@ -38,4 +38,4 @@ Useful to build sets of tracked properties.
 Sys
 ---
 - [PhpInfo](https://github.com/youlweb/JulLib/blob/master/src/Lib/Sys/PhpInfo.php)  
-Wrapper for the classic phpinfo() function. Parsing features to come.
+Wrapper for the classic phpinfo() function.

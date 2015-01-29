@@ -11,7 +11,7 @@ namespace Jul\Lib\String\Property;
 /**
  * Quantify a particular aspect of a string.
  *
- * Useful to build sets of tracked properties.
+ * Intended to create vector representations, such as word vectors.
  * @author Julien <youlweb@hotmail.com>
  */
 interface PropertyInterface
