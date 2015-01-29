@@ -39,9 +39,9 @@ class ClosureFunction implements FunctionInterface
      * Calculate f(x).
      *
      * Optional arguments will be passed to the user-defined closure.
-     * @param float|float[]|mixed $x
+     * @param mixed $x
      * @param mixed $args,...
-     * @return float|float[]|mixed Result.
+     * @return mixed Result.
      */
     public function f($x)
     {

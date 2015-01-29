@@ -41,7 +41,7 @@ class ClosureProperty implements PropertyInterface
      * Optional arguments will be passed to the user-defined closure.
      * @param string $string
      * @param mixed $args,...
-     * @return bool|float|int
+     * @return mixed
      */
     public function value($string)
     {

@@ -20,7 +20,7 @@ interface PropertyInterface
      * Return the property quantity for the input string.
      *
      * @param string $string
-     * @return bool|float|int
+     * @return mixed
      */
     public function value($string);
 }

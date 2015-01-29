@@ -19,8 +19,8 @@ interface FunctionInterface
     /**
      * Calculate f(x).
      *
-     * @param float|float[]|mixed $x
-     * @return float|float[]|mixed Result.
+     * @param mixed $x
+     * @return mixed Result.
      */
     public function f($x);
 }
