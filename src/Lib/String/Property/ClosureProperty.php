@@ -25,6 +25,9 @@ class ClosureProperty implements PropertyInterface
     /**
      * Provide a closure used to compute the property value.
      *
+     * The closure can receive more than one argument, but only the first one
+     * is originally mandatory. Provide default values to all others, or throw
+     * exceptions.
      * @param callable $function
      */
     public function __construct(Closure $function)
@@ -37,7 +40,7 @@ class ClosureProperty implements PropertyInterface
      *
      * Optional arguments will be passed to the user-defined closure.
      * @param string $string
-     * @param mixed $args,... Default values should always be provided.
+     * @param mixed $args,...
      * @return bool|float|int
      */
     public function value($string)

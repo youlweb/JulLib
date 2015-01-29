@@ -25,6 +25,9 @@ class ClosureFunction implements FunctionInterface
     /**
      * Provide a closure used to compute the function output.
      *
+     * The closure can receive more than one argument, but only the first one
+     * is originally mandatory. Provide default values to all others, or throw
+     * exceptions.
      * @param callable $function
      */
     public function __construct(Closure $function)
@@ -37,7 +40,7 @@ class ClosureFunction implements FunctionInterface
      *
      * Optional arguments will be passed to the user-defined closure.
      * @param float|float[]|mixed $x
-     * @param mixed $args,... Default values should always be provided.
+     * @param mixed $args,...
      * @return float|float[]|mixed Result.
      */
     public function f($x)
