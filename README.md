@@ -31,6 +31,8 @@ String
 - [Property](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Property/PropertyInterface.php)  
 A property quantifies a particular aspect of a string.
 Intended to create vector representations, such as word vectors.
+    - [Closure property](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Property/ShannonEntropy.php)
+    A user-defined function is used to calculate the property value.
     - [Shannon entropy](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Property/ShannonEntropy.php)
     Estimate the average minimum number of bits needed to encode a string.
     One of the many aspects to consider to create strong passwords, or measure randomness in a string.
