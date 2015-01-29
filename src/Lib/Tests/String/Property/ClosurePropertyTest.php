@@ -17,17 +17,17 @@ class ClosurePropertyTest extends \PHPUnit_Framework_TestCase
 {
     public function testValueWithMultipleArguments()
     {
-        $property = new ClosureProperty(function ($string, $multiply, $subtract) {
-            return strlen($string) * $multiply - $subtract;
+        $hash = new ClosureProperty(function ($string, $algo = 'sha512') {
+            return hash($algo, $string);
         });
-        $this->assertEquals(10, $property->value('foo', 4, 2));
+        $this->assertEquals('acbd18db4cc2f85cedef654fccc4a4d8', $hash->value('foo', 'md5'));
     }
 
     public function testValueWithSingleArgument()
     {
-        $property = new ClosureProperty(function ($string) {
+        $length = new ClosureProperty(function ($string) {
             return strlen($string);
         });
-        $this->assertEquals(3, $property->value('foo'));
+        $this->assertEquals(3, $length->value('foo'));
     }
 }

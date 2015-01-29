@@ -37,7 +37,7 @@ class ClosureFunction implements FunctionInterface
      *
      * Optional arguments will be passed to the user-defined closure.
      * @param float|float[]|mixed $x
-     * @param mixed $args,...
+     * @param mixed $args,... Default values should always be provided.
      * @return float|float[]|mixed Result.
      */
     public function f($x)
