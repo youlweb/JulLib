@@ -11,7 +11,7 @@ namespace Jul\Lib\Math\Functions;
 /**
  * An object-oriented container for mathematical functions.
  *
- * The goal of this architecture is to stack functions in composite objects.
+ * The goal of this architecture is to build function stacks.
  * @author Julien <youlweb@hotmail.com>
  */
 interface FunctionInterface

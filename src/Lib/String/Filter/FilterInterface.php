@@ -11,7 +11,7 @@ namespace Jul\Lib\String\Filter;
 /**
  * A filter transforms a string.
  *
- * The goal of this architecture is to stack filters in composite objects.
+ * The goal of this architecture is to build filter stacks.
  * @author Julien <youlweb@hotmail.com>
  */
 interface FilterInterface
