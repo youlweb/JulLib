@@ -29,7 +29,7 @@ class TokenizerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(['foo', 'bar'], $whiteSpacer->tokenize('foo bar'));
     }
 
-    public function testTokenizeEmptyString()
+    public function testTokenizeWithEmptyString()
     {
         $fullStopper = new Tokenizer('.');
         $this->assertEquals([], $fullStopper->tokenize(''));

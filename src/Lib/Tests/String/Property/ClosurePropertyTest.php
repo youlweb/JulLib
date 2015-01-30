@@ -15,19 +15,19 @@ use Jul\Lib\String\Property\ClosureProperty;
  */
 class ClosurePropertyTest extends \PHPUnit_Framework_TestCase
 {
+    public function testValue()
+    {
+        $length = new ClosureProperty(function ($string) {
+            return strlen($string);
+        });
+        $this->assertEquals(3, $length->value('foo'));
+    }
+
     public function testValueWithMultipleArguments()
     {
         $hash = new ClosureProperty(function ($string, $algo = 'sha512') {
             return hash($algo, $string);
         });
         $this->assertEquals('acbd18db4cc2f85cedef654fccc4a4d8', $hash->value('foo', 'md5'));
-    }
-
-    public function testValueWithSingleArgument()
-    {
-        $length = new ClosureProperty(function ($string) {
-            return strlen($string);
-        });
-        $this->assertEquals(3, $length->value('foo'));
     }
 }
