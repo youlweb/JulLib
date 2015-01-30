@@ -41,6 +41,8 @@ Useful to create vector representations, such as word vectors.
     - [Shannon entropy](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Property/ShannonEntropy.php)
     Estimate the average minimum number of bits needed to encode a string.
     One of the many aspects to consider to create strong passwords, or measure randomness in a string.
+- [Tokenizer](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Tokenizer/TokenizerInterface.php)
+Break a string down into an array of terms.
 
 Sys
 ---

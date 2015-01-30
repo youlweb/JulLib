@@ -42,6 +42,9 @@ class Tokenizer implements TokenizerInterface
      */
     public function tokenize($string)
     {
+        if (!$string) {
+            return [];
+        }
         return explode($this->_delimiter, $string);
     }
 }
