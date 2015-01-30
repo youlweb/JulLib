@@ -15,7 +15,7 @@ use Jul\Lib\String\Filter\Whitespace;
  */
 class WhitespaceTest extends \PHPUnit_Framework_TestCase
 {
-    public function testFilterWithoutTrim()
+    public function testFilter()
     {
         $whitespace = new Whitespace();
         $this->assertEquals(' foo bar ', $whitespace->filter("\n\n\t   foo\t \n  bar  \n\n \t \r\r  "));
