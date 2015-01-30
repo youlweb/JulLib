@@ -40,5 +40,4 @@ interface BufferInterface extends CollectionInterface
      * @return int
      */
     public function size();
-
 }
