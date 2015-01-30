@@ -9,11 +9,11 @@
 namespace Jul\Lib\String\Tokenizer;
 
 /**
- * Split a string using a char delimiter.
+ * Split a string using a delimiter.
  *
  * @author Julien <youlweb@hotmail.com>
  */
-class CharSplit implements TokenizerInterface
+class Tokenizer implements TokenizerInterface
 {
     /**
      * @var string
@@ -24,12 +24,12 @@ class CharSplit implements TokenizerInterface
      * Provide a single char used to split the string.
      *
      * @param string $delimiter
-     * @throws TokenizerException If the delimiter is not a single char.
+     * @throws TokenizerException If the delimiter is too short.
      */
     public function __construct($delimiter)
     {
-        if (strlen($delimiter) != 1) {
-            throw new TokenizerException('The delimiter must be a single char.');
+        if (strlen($delimiter) < 1) {
+            throw new TokenizerException('The delimiter is too short.');
         }
         $this->_delimiter = $delimiter;
     }
