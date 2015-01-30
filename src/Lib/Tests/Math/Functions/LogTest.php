@@ -15,15 +15,15 @@ use Jul\Lib\Math\Functions\Log;
  */
 class LogTest extends \PHPUnit_Framework_TestCase
 {
+    public function testF()
+    {
+        $log = new Log();
+        $this->assertEquals(log(5), $log->f(5));
+    }
+
     public function testFWithBase()
     {
         $log = new Log(2);
         $this->assertEquals(log(5, 2), $log->f(5));
-    }
-
-    public function testFWithoutBase()
-    {
-        $log = new Log();
-        $this->assertEquals(log(5), $log->f(5));
     }
 }
