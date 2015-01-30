@@ -23,7 +23,7 @@ Math
 ----
 - [Function](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Functions/FunctionInterface.php)  
 An object-oriented container for mathematical functions.
-The goal of this architecture is to stack functions in composite objects.
+The goal of this architecture is to build function stacks.
     - [Closure function](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Functions/ClosureFunction.php)
     A user-defined function is used to calculate the function output.
     - [Log](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Functions/Log.php)
@@ -33,6 +33,16 @@ Perform common arithmetic operations on a vector of floats.
 
 String
 ------
+- [Filter](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Filter/FilterInterface.php)  
+A filter transforms a string.
+This object-oriented approach allows to build filter stacks.
+    - [Lowercase](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Filter/Lowercase.php)
+    Convert all alphabetical characters to lowercase.
+    - [Uppercase](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Filter/Uppercase.php)
+    Convert all alphabetical characters to uppercase.
+    - [Whitespace](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Filter/Whitespace.php)
+    Trim consecutive whitespaces down to a single whitespace.
+    New lines and tabs are also converted to a single whitespace.
 - [Property](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Property/PropertyInterface.php)  
 A property quantifies a particular aspect of a string.
 Useful to create vector representations, such as word vectors.
