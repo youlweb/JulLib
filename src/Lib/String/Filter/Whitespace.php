@@ -23,7 +23,7 @@ class Whitespace implements FilterInterface
     private $_trim;
 
     /**
-     * @param bool $trim
+     * @param bool $trim Trim leading and trailing whitespaces.
      */
     public function __construct($trim = false)
     {
