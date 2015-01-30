@@ -15,7 +15,7 @@ use Jul\Lib\Math\Functions\ClosureFunction;
  */
 class ClosureFunctionTest extends \PHPUnit_Framework_TestCase
 {
-    public function testFWithSingleArgument()
+    public function testF()
     {
         $square = new ClosureFunction(function ($x) {
             return $x * $x;
