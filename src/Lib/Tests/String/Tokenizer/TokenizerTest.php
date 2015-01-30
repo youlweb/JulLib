@@ -25,19 +25,19 @@ class TokenizerTest extends \PHPUnit_Framework_TestCase
 
     public function testTokenize()
     {
-        $tokenizer = new Tokenizer(' ');
-        $this->assertEquals(['foo', 'bar'], $tokenizer->tokenize('foo bar'));
+        $whiteSpacer = new Tokenizer(' ');
+        $this->assertEquals(['foo', 'bar'], $whiteSpacer->tokenize('foo bar'));
     }
 
     public function testTokenizeEmptyString()
     {
-        $tokenizer = new Tokenizer(' ');
-        $this->assertEquals([], $tokenizer->tokenize(''));
+        $fullStopper = new Tokenizer('.');
+        $this->assertEquals([], $fullStopper->tokenize(''));
     }
 
     public function testTokenizeNoTokenFound()
     {
-        $tokenizer = new Tokenizer(' ');
-        $this->assertEquals(['foo'], $tokenizer->tokenize('foo'));
+        $questioner = new Tokenizer(' ');
+        $this->assertEquals(['foo'], $questioner->tokenize('foo'));
     }
 }
