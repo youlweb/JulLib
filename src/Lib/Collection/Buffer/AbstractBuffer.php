@@ -14,7 +14,7 @@ use Jul\Lib\Collection\AbstractCollection;
  * A fixed size, iterable F.I.F.O object buffer.
  *
  * The buffer implements a collection.
- * @see Jul\Lib\Collection\CollecionInterface
+ * @see \Jul\Lib\Collection\CollectionInterface
  * @author Julien <youlweb@hotmail.com>
  */
 class AbstractBuffer extends AbstractCollection
