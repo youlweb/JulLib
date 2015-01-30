@@ -17,7 +17,7 @@ namespace Jul\Lib\String\Filter;
 interface FilterInterface
 {
     /**
-     * Return the result string after transformation.
+     * Return the string after transformation.
      *
      * @param string $string
      * @return string The resulting string.
