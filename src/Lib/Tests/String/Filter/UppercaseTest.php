@@ -8,16 +8,16 @@
  */
 namespace Jul\Lib\Tests\String\Filter;
 
-use Jul\Lib\String\Filter\Lowercase;
+use Jul\Lib\String\Filter\Uppercase;
 
 /**
  * @author Julien <youlweb@hotmail.com>
  */
-class LowercaseTest extends \PHPUnit_Framework_TestCase 
+class UppercaseTest extends \PHPUnit_Framework_TestCase
 {
     public function testFilter()
     {
-        $lowercase = new Lowercase();
-        $this->assertEquals('foo bar', $lowercase->filter('Foo Bar'));
+        $uppercase = new Uppercase();
+        $this->assertEquals('FOO BAR', $uppercase->filter('Foo Bar'));
     }
 }
