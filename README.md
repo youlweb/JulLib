@@ -51,11 +51,11 @@ Useful to create vector representations, such as word vectors.
     - [Shannon entropy](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Property/ShannonEntropy.php)
     Estimate the average minimum number of bits needed to encode a string.
     One of the many aspects to consider to create strong passwords, or measure randomness in a string.
-- [Tokenizer](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Tokenizer/TokenizerInterface.php)
+- [Tokenizer](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Tokenizer/TokenizerInterface.php)  
 Break a string down into an array of terms.
-    - [Delimiter](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Tokenizer/Delimiter.php)  
+    - [Delimiter](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Tokenizer/Delimiter.php)
     Wrapper for the native PHP explode() function, that uses a delimiter to tokenize a string.
-    - [Suffix array](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Tokenizer/SuffixArray.php)  
+    - [Suffix array](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Tokenizer/SuffixArray.php)
     A sorted array of all suffixes of a string.
     Used in full text indices, data compression, and within the field of bioinformatics.
 
