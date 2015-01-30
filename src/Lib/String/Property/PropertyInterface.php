@@ -19,9 +19,8 @@ interface PropertyInterface
     /**
      * Return the property quantity for the input string.
      *
-     * Example: $length->of('foo');
      * @param string $string
      * @return mixed
      */
-    public function of($string);
+    public function value($string);
 }

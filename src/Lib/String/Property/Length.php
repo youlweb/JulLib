@@ -21,7 +21,7 @@ class Length implements PropertyInterface
      * @param string $string
      * @return int
      */
-    public function of($string)
+    public function value($string)
     {
         return strlen($string);
     }

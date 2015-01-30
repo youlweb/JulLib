@@ -20,7 +20,7 @@ class ClosurePropertyTest extends \PHPUnit_Framework_TestCase
         $hash = new ClosureProperty(function ($string, $algo = 'sha512') {
             return hash($algo, $string);
         });
-        $this->assertEquals('acbd18db4cc2f85cedef654fccc4a4d8', $hash->of('foo', 'md5'));
+        $this->assertEquals('acbd18db4cc2f85cedef654fccc4a4d8', $hash->value('foo', 'md5'));
     }
 
     public function testValueWithSingleArgument()
@@ -28,6 +28,6 @@ class ClosurePropertyTest extends \PHPUnit_Framework_TestCase
         $length = new ClosureProperty(function ($string) {
             return strlen($string);
         });
-        $this->assertEquals(3, $length->of('foo'));
+        $this->assertEquals(3, $length->value('foo'));
     }
 }

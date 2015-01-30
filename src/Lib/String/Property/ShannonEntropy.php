@@ -37,7 +37,7 @@ class ShannonEntropy implements PropertyInterface
      * @param string $string
      * @return float
      */
-    public function of($string)
+    public function value($string)
     {
         $h = 0;
         $size = strlen($string);

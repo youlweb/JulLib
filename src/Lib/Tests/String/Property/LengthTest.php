@@ -18,7 +18,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
     public function testValue()
     {
         $length = new Length();
-        $this->assertEquals(7, $length->of('foo bar'));
-        $this->assertEquals(0, $length->of(''));
+        $this->assertEquals(7, $length->value('foo bar'));
+        $this->assertEquals(0, $length->value(''));
     }
 }
