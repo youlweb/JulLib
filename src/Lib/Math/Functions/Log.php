@@ -21,9 +21,8 @@ class Log implements FunctionInterface
     private $_base;
 
     /**
-     * A base can be initialized, otherwise {@link http://php.net/manual/en/function.log.php defaults to 'e'}.
-     *
-     * @param float $base
+     * @param float $base Log base.
+     * {@link http://php.net/manual/en/function.log.php Defaults to 'e'}.
      */
     public function __construct($base = M_E)
     {

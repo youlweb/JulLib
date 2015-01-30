@@ -27,9 +27,7 @@ class Vector implements VectorInterface
     private $_vector = [];
 
     /**
-     * Initialize the vector with an array of floats.
-     *
-     * @param float[] $vector
+     * @param float[] $vector Initialize the vector with an array of floats.
      * @throws VectorException If the input array is empty or contains non-numeric values.
      */
     public function __construct(array $vector)

@@ -23,12 +23,9 @@ class ClosureFunction implements FunctionInterface
     private $_function;
 
     /**
-     * Provide a closure used to compute the function output.
-     *
-     * The closure can receive more than one argument, but only the first one
-     * is originally mandatory. Provide default values to all others, or throw
-     * exceptions.
-     * @param callable $function
+     * @param callable $function The closure can receive more than one argument,
+     * but only the first one is mandatory. Provide default values to all others,
+     * or throw exceptions.
      */
     public function __construct(Closure $function)
     {

@@ -28,9 +28,7 @@ abstract class AbstractCollection implements CollectionInterface
     protected $_objects;
 
     /**
-     * The collection may be initialized with an array of objects.
-     *
-     * @param array $objects
+     * @param array $objects The collection may be initialized with an array of objects.
      */
     public function __construct(array $objects = [])
     {

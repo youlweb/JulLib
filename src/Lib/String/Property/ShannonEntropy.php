@@ -24,9 +24,7 @@ class ShannonEntropy implements PropertyInterface
     private $_precision;
 
     /**
-     * The floating point precision can be determined.
-     *
-     * @param int $precision
+     * @param int $precision The floating point precision can be determined.
      */
     public function __construct($precision = null)
     {

@@ -9,7 +9,7 @@
 namespace Jul\Lib\String\Tokenizer;
 
 /**
- * Create an array of tokens from a string.
+ * Break a string down into an array of terms.
  *
  * @author Julien <youlweb@hotmail.com>
  */

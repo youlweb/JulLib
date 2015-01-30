@@ -9,8 +9,9 @@
 namespace Jul\Lib\String\Tokenizer;
 
 /**
- * Split a string using a delimiter.
+ * Break a string down into an array of terms using a delimiter.
  *
+ * The delimiter is set at instantiation and cannot be changed.
  * @author Julien <youlweb@hotmail.com>
  */
 class Tokenizer implements TokenizerInterface
@@ -21,9 +22,7 @@ class Tokenizer implements TokenizerInterface
     private $_delimiter;
 
     /**
-     * Provide a single char used to split the string.
-     *
-     * @param string $delimiter
+     * @param string $delimiter The string used to break down the input string.
      * @throws TokenizerException If the delimiter is too short.
      */
     public function __construct($delimiter)
