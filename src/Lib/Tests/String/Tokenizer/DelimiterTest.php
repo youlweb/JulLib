@@ -8,36 +8,36 @@
  */
 namespace Jul\Lib\Tests\String\Tokenizer;
 
-use Jul\Lib\String\Tokenizer\Tokenizer;
+use Jul\Lib\String\Tokenizer\Delimiter;
 
 /**
  * @author Julien <youlweb@hotmail.com>
  */
-class TokenizerTest extends \PHPUnit_Framework_TestCase
+class DelimiterTest extends \PHPUnit_Framework_TestCase
 {
     const EXCEPTION = 'Jul\Lib\String\Tokenizer\TokenizerException';
 
     public function testConstructThrowsExceptionIfDelimiterTooShort()
     {
         $this->setExpectedException(self::EXCEPTION);
-        new Tokenizer('');
+        new Delimiter('');
     }
 
     public function testTokenize()
     {
-        $whiteSpacer = new Tokenizer(' ');
+        $whiteSpacer = new Delimiter(' ');
         $this->assertEquals(['foo', 'bar'], $whiteSpacer->tokenize('foo bar'));
     }
 
     public function testTokenizeWithEmptyString()
     {
-        $fullStopper = new Tokenizer('.');
+        $fullStopper = new Delimiter('.');
         $this->assertEquals([], $fullStopper->tokenize(''));
     }
 
     public function testTokenizeNoTokenFound()
     {
-        $questioner = new Tokenizer(' ');
+        $questioner = new Delimiter(' ');
         $this->assertEquals(['foo'], $questioner->tokenize('foo'));
     }
 }

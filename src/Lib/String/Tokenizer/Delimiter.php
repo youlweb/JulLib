@@ -14,7 +14,7 @@ namespace Jul\Lib\String\Tokenizer;
  * The delimiter is set at instantiation and cannot be changed.
  * @author Julien <youlweb@hotmail.com>
  */
-class Tokenizer implements TokenizerInterface
+class Delimiter implements TokenizerInterface
 {
     /**
      * @var string
