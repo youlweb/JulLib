@@ -9,9 +9,11 @@
 namespace Jul\Lib\String\Tokenizer;
 
 /**
- * A sorted array of all suffixes of a string.
+ * An array of all suffixes of a string.
  *
- * Used in full text indices, data compression, and within the field of bioinformatics.
+ * The input string can be segmented using a delimiter, and the output
+ * sorted alphabetically. Used in full text indices, data compression,
+ * and within the field of bioinformatics.
  * @author Julien <youlweb@hotmail.com>
  */
 class SuffixArray implements TokenizerInterface
@@ -24,16 +26,16 @@ class SuffixArray implements TokenizerInterface
     /**
      * @var bool
      */
-    private $_sorted;
+    private $_sort;
 
     /**
-     * @param bool $sorted Optionally sort the array in alphabetical order.
-     * @param string $delimiter Optionally use a delimiter to segment
-     * the input string.
+     * @param bool $sort Optionally sort the output array in alphabetical order.
+     * @param string $delimiter Optionally use a delimiter to segment the
+     * input string.
      */
-    public function __construct($sorted = false, $delimiter = null)
+    public function __construct($sort = false, $delimiter = null)
     {
-        $this->_sorted = $sorted;
+        $this->_sort = $sort;
         $this->_delimiter = $delimiter;
     }
 
@@ -44,7 +46,7 @@ class SuffixArray implements TokenizerInterface
             return [];
         }
         $suffixes = $this->_delimiter ? $this->suffixArrayDelimiter($string) : $this->suffixArray($string);
-        if ($this->_sorted) {
+        if ($this->_sort) {
             sort($suffixes, SORT_STRING);
         }
         return $suffixes;

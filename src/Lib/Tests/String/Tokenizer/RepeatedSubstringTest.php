@@ -29,7 +29,7 @@ class RepeatedSubstringTest extends \PHPUnit_Framework_TestCase
 
     public function testTokenizeWithDelimiter()
     {
-        $repeatedSubstring = new RepeatedSubstring(1,' ');
+        $repeatedSubstring = new RepeatedSubstring(1, ' ');
         $this->assertEquals([], $repeatedSubstring->tokenize('it is what it is'));
     }
 }
