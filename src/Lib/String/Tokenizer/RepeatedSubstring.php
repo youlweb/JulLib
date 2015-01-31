@@ -42,7 +42,7 @@ class RepeatedSubstring implements TokenizerInterface
     /** {@inheritDoc} */
     public function tokenize($string)
     {
-        $suffixArray = new SuffixArray(true);
+        $suffixArray = new SuffixArray(true, $this->_delimiter);
         $suffixes = $suffixArray->tokenize($string);
         if (count($suffixes) < 2) {
             return [];
@@ -79,24 +79,21 @@ class RepeatedSubstring implements TokenizerInterface
      */
     private function repeatedSubstringsDelimiter(array $suffixes)
     {
-        // the suffix array must obey the same delimiter
-
-
         $result = [];
-        $prev_line = explode($this->_delimiter, $suffixes[0]);
+        $prev_tokens = explode($this->_delimiter, $suffixes[0]);
         for ($a = 1; $a < count($suffixes); $a++) {
-            $cur_line = explode($this->_delimiter, $suffixes[$a]);
+            $cur_tokens = explode($this->_delimiter, $suffixes[$a]);
             $substring = '';
-            for ($b = 0; $b < min(count($prev_line), count($cur_line)); $b++) {
-                if ($cur_line[$b] != $prev_line[$b]) {
+            foreach ($cur_tokens as $index => $token) {
+                if (!isset($prev_tokens[$index]) || $token !== $prev_tokens[$index]) {
                     break;
                 }
-                $substring .= $cur_line[$b];
-                if ($b > $this->_min && !in_array($substring, $result)) {
-                    $result[] = $substring;
-                }
+                $substring .= $token . $this->_delimiter;
             }
-            $prev_line = $cur_line;
+            if (!in_array($substring, $result)) {
+                $result[] = $substring;
+            }
+            $prev_tokens = $cur_tokens;
         }
         return $result;
     }
