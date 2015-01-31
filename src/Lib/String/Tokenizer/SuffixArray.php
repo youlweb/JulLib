@@ -17,30 +17,62 @@ namespace Jul\Lib\String\Tokenizer;
 class SuffixArray implements TokenizerInterface
 {
     /**
+     * @var null
+     */
+    private $_delimiter;
+
+    /**
      * @var bool
      */
     private $_sorted;
 
     /**
      * @param bool $sorted Optionally sort the array in alphabetical order.
+     * @param string $delimiter Optionally use a delimiter to segment
+     * the input string.
      */
-    public function __construct($sorted = false)
+    public function __construct($sorted = false, $delimiter = null)
     {
         $this->_sorted = $sorted;
+        $this->_delimiter = $delimiter;
     }
 
     /** {@inheritDoc} */
     public function tokenize($string)
     {
-        $suffixes = [];
         if (!$string) {
-            return $suffixes;
+            return [];
         }
-        foreach (str_split($string) as $index => $char) {
-            $suffixes[] = substr($string, $index);
-        }
+        $suffixes = $this->_delimiter ? $this->suffixArrayDelimiter($string) : $this->suffixArray($string);
         if ($this->_sorted) {
             sort($suffixes, SORT_STRING);
+        }
+        return $suffixes;
+    }
+
+    /**
+     * @param string $string
+     * @return string[]
+     */
+    private function suffixArray($string)
+    {
+        $suffixes = [];
+        for ($a = 0; $a < strlen($string); $a++) {
+            $suffixes[] = substr($string, $a);
+        }
+        return $suffixes;
+    }
+
+    /**
+     * @param string $string
+     * @return string[]
+     */
+    private function suffixArrayDelimiter($string)
+    {
+        $suffixes = [$string];
+        while (($index = strpos($string, $this->_delimiter)) !== false) {
+            $string = substr($string, $index + 1);
+            $suffixes[] = $string;
         }
         return $suffixes;
     }
