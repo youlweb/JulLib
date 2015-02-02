@@ -18,7 +18,29 @@ class SuffixArrayTest extends \PHPUnit_Framework_TestCase
     public function testTokenize()
     {
         $suffixArray = new SuffixArray();
-        $this->assertEquals(['bar', 'ar', 'r'], $suffixArray->tokenize('bar'));
+        $this->assertEquals(['foo bar', 'oo bar', 'o bar', ' bar', 'bar', 'ar', 'r'],
+            $suffixArray->tokenize('foo bar'));
+    }
+
+    public function testTokenizeDelimiter()
+    {
+        $suffixArray = new SuffixArray(false, ', ');
+        $this->assertEquals(['foo, bar, baz', 'bar, baz', 'baz'],
+            $suffixArray->tokenize(', foo, bar, , baz, , '));
+    }
+
+    public function testTokenizeDelimiterSorted()
+    {
+        $suffixArray = new SuffixArray(true, ' ');
+        $this->assertEquals(['bar baz', 'baz', 'foo bar baz'],
+            $suffixArray->tokenize('foo bar baz'));
+    }
+
+    public function testTokenizeEmptyDelimiter()
+    {
+        $suffixArray = new SuffixArray(false, '');
+        $this->assertEquals(['foo bar', 'oo bar', 'o bar', ' bar', 'bar', 'ar', 'r'],
+            $suffixArray->tokenize('foo bar'));
     }
 
     public function testTokenizeEmptyString()
@@ -30,6 +52,7 @@ class SuffixArrayTest extends \PHPUnit_Framework_TestCase
     public function testTokenizeSorted()
     {
         $suffixArray = new SuffixArray(true);
-        $this->assertEquals(['ar', 'bar', 'r'], $suffixArray->tokenize('bar'));
+        $this->assertEquals([' bar', 'ar', 'bar', 'foo bar', 'o bar', 'oo bar', 'r'],
+            $suffixArray->tokenize('foo bar'));
     }
 }
