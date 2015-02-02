@@ -29,15 +29,21 @@ class DelimiterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(['foo', 'bar'], $whiteSpacer->tokenize('foo bar'));
     }
 
-    public function testTokenizeWithEmptyString()
-    {
-        $fullStopper = new Delimiter('.');
-        $this->assertEquals([], $fullStopper->tokenize(''));
-    }
-
     public function testTokenizeNoTokenFound()
     {
         $questioner = new Delimiter(' ');
         $this->assertEquals(['foo'], $questioner->tokenize('foo'));
+    }
+
+    public function testTokenizeRemovesEmpties()
+    {
+        $commatose = new Delimiter(',');
+        $this->assertEquals(['foo', 'bar', ' '], $commatose->tokenize(',,,foo,,,,bar,,, ,,,,'));
+    }
+
+    public function testTokenizeWithEmptyString()
+    {
+        $fullStopper = new Delimiter('.');
+        $this->assertEquals([], $fullStopper->tokenize(''));
     }
 }

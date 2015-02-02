@@ -18,8 +18,8 @@ interface TokenizerInterface
     /**
      * Split the input string into an array of tokens.
      *
-     * @param $string
-     * @return mixed
+     * @param string $string
+     * @return string[]
      */
     public function tokenize($string);
 }

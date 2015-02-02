@@ -36,14 +36,13 @@ class Delimiter implements TokenizerInterface
     /**
      * Split the input string into an array of tokens.
      *
-     * @param $string
-     * @return array
+     * Empty elements present in the output array as a result of consecutive
+     * or leading/trailing delimiters are automatically removed.
+     * @param string $string
+     * @return string[]
      */
     public function tokenize($string)
     {
-        if (!$string) {
-            return [];
-        }
-        return explode($this->_delimiter, $string);
+        return array_values(array_filter(explode($this->_delimiter, $string), 'strlen'));
     }
 }
