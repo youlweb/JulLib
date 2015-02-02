@@ -71,9 +71,10 @@ class SuffixArray implements TokenizerInterface
      */
     private function suffixArrayDelimiter($string)
     {
+        $delimiter_size = strlen($this->_delimiter);
         $suffixes = [$string];
         while (($index = strpos($string, $this->_delimiter)) !== false) {
-            $string = substr($string, $index + 1);
+            $string = substr($string, $index + $delimiter_size);
             $suffixes[] = $string;
         }
         return $suffixes;

@@ -24,9 +24,9 @@ class SuffixArrayTest extends \PHPUnit_Framework_TestCase
 
     public function testTokenizeDelimiter()
     {
-        $suffixArray = new SuffixArray(false, ' ');
-        $this->assertEquals(['foo bar baz', 'bar baz', 'baz'],
-            $suffixArray->tokenize('foo bar baz'));
+        $suffixArray = new SuffixArray(false, ', ');
+        $this->assertEquals(['foo, bar, baz', 'bar, baz', 'baz'],
+            $suffixArray->tokenize('foo, bar, baz'));
     }
 
     public function testTokenizeDelimiterSorted()
