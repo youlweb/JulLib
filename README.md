@@ -54,13 +54,13 @@ Useful to create vector representations, such as word vectors.
 - [Tokenizer](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Tokenizer/TokenizerInterface.php)  
 Break a string down into an array of terms.
     - [Delimiter](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Tokenizer/Delimiter.php)
-    Similar to PHP's native explode() function, with additional output checks.
+    Similar to PHP's native explode() function, with additional checks.
     - [Repeated substring](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Tokenizer/RepeatedSubstring.php)
     Find all repeated substrings in a string.
     Used in full text indices, data compression, semantic analysis, spam filtering,
     and within the field of bioinformatics.
     - [Suffix array](https://github.com/youlweb/JulLib/blob/master/src/Lib/String/Tokenizer/SuffixArray.php)
-    A sorted array of all suffixes of a string. It's an efficient alternative to a suffix tree.
+    A sorted array of all suffixes of a string. An efficient alternative to a suffix tree.
 
 Sys
 ---

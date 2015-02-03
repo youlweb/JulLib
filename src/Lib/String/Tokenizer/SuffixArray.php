@@ -43,7 +43,12 @@ class SuffixArray implements TokenizerInterface
         $this->_delimiter = $delimiter;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * Return a suffix array.
+     *
+     * @param string $string
+     * @return string[]
+     */
     public function tokenize($string)
     {
         if (!$string) {
@@ -81,6 +86,9 @@ class SuffixArray implements TokenizerInterface
         $suffixes = [$tokens[$count - 1]];
         for ($a = $count - 2; $a > -1; $a--) {
             $suffixes[] = $tokens[$a] . $this->_delimiter . end($suffixes);
+        }
+        if ($this->_sort) {
+            return $suffixes;
         }
         return array_reverse($suffixes);
     }

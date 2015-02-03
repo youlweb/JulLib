@@ -39,7 +39,12 @@ class RepeatedSubstring implements TokenizerInterface
         $this->_delimiter = $delimiter;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * Return unique repeated substrings.
+     *
+     * @param string $string
+     * @return string[]
+     */
     public function tokenize($string)
     {
         $suffixArray = new SuffixArray(true, $this->_delimiter);
