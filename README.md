@@ -28,6 +28,10 @@ The goal of this architecture is to build function stacks.
     A user-defined function is used to calculate the function output.
     - [Log](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Functions/Log.php)
     Natural logarithm and log(`base`).
+    - [Softmax](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Functions/Softmax.php)
+    The categorical probability distribution of a vector.
+    The softmax function is often implemented at the final layer of an artificial neural network
+    used for classification. 
 - [Vector](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Vector/VectorInterface.php)  
 Perform common arithmetic operations on a vector of floats.
 For instance, the cosine similarity of two vectors is commonly used in text mining and classification tasks.

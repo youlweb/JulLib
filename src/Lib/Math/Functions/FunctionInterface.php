@@ -21,6 +21,7 @@ interface FunctionInterface
      *
      * @param mixed $x
      * @return mixed Result.
+     * @throws FunctionException If something goes wrong.
      */
     public function f($x);
 }
