@@ -36,7 +36,7 @@ class Delimiter implements TokenizerInterface
     /**
      * Split the input string into an array of tokens.
      *
-     * Empty elements present in the output array as a result of consecutive
+     * Empty elements present in the output array as a result of consecutive,
      * or leading/trailing delimiters are automatically removed.
      * @param string $string
      * @return string[]

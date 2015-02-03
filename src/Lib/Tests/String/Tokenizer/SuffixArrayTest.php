@@ -29,6 +29,13 @@ class SuffixArrayTest extends \PHPUnit_Framework_TestCase
             $suffixArray->tokenize(', foo, bar, , baz, , '));
     }
 
+    public function testTokenizeDelimiterNotFound()
+    {
+        $suffixArray = new SuffixArray(false, '-');
+        $this->assertEquals(['foo bar baz'],
+            $suffixArray->tokenize('foo bar baz'));
+    }
+
     public function testTokenizeDelimiterSorted()
     {
         $suffixArray = new SuffixArray(true, ' ');

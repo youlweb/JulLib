@@ -11,10 +11,10 @@ namespace Jul\Lib\String\Tokenizer;
 /**
  * Find repeated substrings in a string.
  *
- * A minimum length can be provided to filter repetitions of single characters.
- * A delimiter such as the whitespace char can be provided to find repeated
- * words for instance.
- * This class requires the SuffixArray tokenizer.
+ * Used in full text indices, data compression, semantic analysis, spam filtering,
+ * and within the field of bioinformatics.
+ * A minimum length can be provided to filter out repetitions of short substrings.
+ * A delimiter such as a whitespace can be provided to find repeated tokens.
  * @author Julien <youlweb@hotmail.com>
  */
 class RepeatedSubstring implements TokenizerInterface
@@ -47,10 +47,8 @@ class RepeatedSubstring implements TokenizerInterface
         if (count($suffixes) < 2) {
             return [];
         }
-        if ($this->_delimiter) {
-            return $this->repeatedSubstringsDelimiter($suffixes);
-        }
-        return $this->repeatedSubstrings($suffixes);
+        return array_values(array_unique($this->_delimiter ?
+            $this->repeatedSubstringsDelimiter($suffixes) : $this->repeatedSubstrings($suffixes)));
     }
 
     /**
@@ -61,12 +59,13 @@ class RepeatedSubstring implements TokenizerInterface
     {
         $result = [];
         for ($a = 1; $a < count($suffixes); $a++) {
-            for ($b = 0; $b < min(strlen($suffixes[$a]), strlen($suffixes[$a - 1])); $b++) {
-                if ($suffixes[$a][$b] != $suffixes[$a - 1][$b]) {
+            $prev_line = &$suffixes[$a - 1];
+            for ($b = 0; $b < strlen($prev_line); $b++) {
+                if ($suffixes[$a][$b] != $prev_line[$b]) {
                     break;
                 }
-                if ($b >= $this->_min && !in_array(($s = substr($suffixes[$a], 0, $b + 1)), $result)) {
-                    $result[] = $s;
+                if ($b >= $this->_min) {
+                    $result[] = substr($prev_line, 0, $b + 1);
                 }
             }
         }
@@ -80,20 +79,33 @@ class RepeatedSubstring implements TokenizerInterface
     private function repeatedSubstringsDelimiter(array $suffixes)
     {
         $result = [];
-        $prev_tokens = explode($this->_delimiter, $suffixes[0]);
+        $delimiter_length = strlen($this->_delimiter) - 1;
         for ($a = 1; $a < count($suffixes); $a++) {
-            $cur_tokens = explode($this->_delimiter, $suffixes[$a]);
-            $substring = '';
-            foreach ($cur_tokens as $index => $token) {
-                if (!isset($prev_tokens[$index]) || $token !== $prev_tokens[$index]) {
+            $find_delimiter = true;
+            $prev_line = &$suffixes[$a - 1];
+            $last = strlen($prev_line) - 1;
+            for ($b = 0; $b <= $last; $b++) {
+                if ($suffixes[$a][$b] != $prev_line[$b]) {
                     break;
                 }
-                $substring .= $token . $this->_delimiter;
+                if ($b == $last) {
+                    if ($b >= $this->_min) {
+                        $result[] = substr($prev_line, 0);
+                    }
+                    break;
+                }
+                if ($find_delimiter) {
+                    $next_delimiter = strpos($prev_line, $this->_delimiter, $b);
+                    $find_delimiter = false;
+                }
+                if ($b === $next_delimiter) {
+                    if ($b > $this->_min) {
+                        $result[] = substr($prev_line, 0, $b);
+                    }
+                    $b += $delimiter_length;
+                    $find_delimiter = true;
+                }
             }
-            if (!in_array($substring, $result)) {
-                $result[] = $substring;
-            }
-            $prev_tokens = $cur_tokens;
         }
         return $result;
     }

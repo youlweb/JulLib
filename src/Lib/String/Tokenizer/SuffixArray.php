@@ -76,14 +76,12 @@ class SuffixArray implements TokenizerInterface
     private function suffixArrayDelimiter($string)
     {
         $delimiter = new Delimiter($this->_delimiter);
-        $tokens = $delimiter->tokenize($string);
-        $string = implode($this->_delimiter, $tokens);
-        $delimiter_size = strlen($this->_delimiter);
-        $suffixes = [$string];
-        while (($index = strpos($string, $this->_delimiter)) !== false) {
-            $string = substr($string, $index + $delimiter_size);
-            $suffixes[] = $string;
+        $tokens = $delimiter->tokenize($string); // Filter consecutive/lead/trail delimiters
+        $count = count($tokens);
+        $suffixes = [$tokens[$count - 1]];
+        for ($a = $count - 2; $a > -1; $a--) {
+            $suffixes[] = $tokens[$a] . $this->_delimiter . end($suffixes);
         }
-        return $suffixes;
+        return array_reverse($suffixes);
     }
 }
