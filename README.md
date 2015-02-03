@@ -30,6 +30,7 @@ The goal of this architecture is to build function stacks.
     Natural logarithm and log(`base`).
 - [Vector](https://github.com/youlweb/JulLib/blob/master/src/Lib/Math/Vector/VectorInterface.php)  
 Perform common arithmetic operations on a vector of floats.
+For instance, the cosine similarity of two vectors is commonly used in text mining and classification tasks.
 
 String
 ------

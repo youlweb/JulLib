@@ -54,6 +54,16 @@ class Vector implements VectorInterface
     }
 
     /** {@inheritDoc} */
+    public function cosine(VectorInterface $vector)
+    {
+        $magnitude = $this->magnitude() * $vector->magnitude();
+        if (0 == $magnitude) {
+            throw new VectorException('The cosine cannot be calculated when the magnitude of both vectors is null.');
+        }
+        return $this->dotProduct($vector) / $magnitude;
+    }
+
+    /** {@inheritDoc} */
     public function count()
     {
         return count($this->_vector);

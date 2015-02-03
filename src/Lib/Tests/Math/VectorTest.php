@@ -50,6 +50,29 @@ class VectorTest extends \PHPUnit_Framework_TestCase
         $vector_1->add($vector_2);
     }
 
+    public function testCosine()
+    {
+        $vector_1 = new Vector([5, 2.5, 4]);
+        $vector_2 = new Vector([-5, 1, 9]);
+        $this->assertEquals(0.19, round($vector_1->cosine($vector_2), 3));
+    }
+
+    public function testCosineThrowsExceptionIfNullMagnitude()
+    {
+        $this->setExpectedException(self::EXCEPTION);
+        $vector_1 = new Vector([0, 0, 0]);
+        $vector_2 = new Vector([0, 0, 0]);
+        $vector_1->cosine($vector_2);
+    }
+
+    public function testCosineThrowsExceptionIfVectorsOfDifferentLength()
+    {
+        $this->setExpectedException(self::EXCEPTION);
+        $vector_1 = new Vector([5, 2.5, 4]);
+        $vector_2 = new Vector([-5]);
+        $vector_1->cosine($vector_2);
+    }
+
     public function testCount()
     {
         $array = [5, 2.5, 4];

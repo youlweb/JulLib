@@ -16,7 +16,7 @@ namespace Jul\Lib\Math\Vector;
 interface VectorInterface extends \Countable, \Iterator
 {
     /**
-     * Add a vector's values to the current vector.
+     * Add the input vector values to the current vector.
      *
      * @param VectorInterface $vector
      * @return self
@@ -25,7 +25,18 @@ interface VectorInterface extends \Countable, \Iterator
     public function add(VectorInterface $vector);
 
     /**
-     * Get the dot product of a vector and the current vector.
+     * Return the cosine of the input vector and the current vector.
+     *
+     * This value measures the similarity of two vectors.
+     * @param VectorInterface $vector
+     * @return float
+     * @throws VectorException If the input vector is of different length, or
+     * either vector has a magnitude of zero.
+     */
+    public function cosine(VectorInterface $vector);
+
+    /**
+     * Get the dot product of the input vector and the current vector.
      *
      * @param VectorInterface $vector
      * @return float Dot product.
@@ -70,7 +81,7 @@ interface VectorInterface extends \Countable, \Iterator
     public function scale($factor);
 
     /**
-     * Subtract a vector from the current vector.
+     * Subtract the input vector from the current vector.
      *
      * @param VectorInterface $vector
      * @return self
