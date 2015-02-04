@@ -13,32 +13,31 @@ namespace Jul\Lib\String\Tokenizer;
  *
  * Used in full text indices, data compression, semantic analysis, spam filtering,
  * and within the field of bioinformatics.
+ * A suffix array tokenizer must be provided at instantiation. If a delimiter was
+ * used in the suffix array, it will be applied here too.
  * A minimum length can be provided to filter out repetitions of short substrings.
- * A delimiter such as a whitespace can be provided to find repeated tokens.
  * @author Julien <youlweb@hotmail.com>
  */
 class RepeatedSubstring implements TokenizerInterface
 {
     /**
-     * @var DelimiterInterface
-     */
-    private $_delimiter;
-
-    /**
      * @var int
      */
     private $_min;
 
-
+    /**
+     * @var SuffixArrayInterface
+     */
+    private $_suffixArray;
 
     /**
+     * @param SuffixArrayInterface $suffixArray Suffix array tokenizer.
      * @param int $min_length Minimum length of the repeated substring.
-     * @param string $delimiter Token separator.
      */
-    public function __construct($min_length = 1, $delimiter = null)
+    public function __construct(SuffixArrayInterface $suffixArray, $min_length = 1)
     {
         $this->_min = $min_length - 1; // Minus 1 because string indexes start at 0.
-        $this->_delimiter = $delimiter;
+        $this->_suffixArray = $suffixArray;
     }
 
     /**
@@ -49,13 +48,14 @@ class RepeatedSubstring implements TokenizerInterface
      */
     public function tokenize($string)
     {
-        $suffixArray = new SuffixArray(true, $this->_delimiter);
-        $suffixes = $suffixArray->tokenize($string);
+        $suffixes = $this->_suffixArray->setSort(SORT_STRING)->tokenize($string);
         if (count($suffixes) < 2) {
             return [];
         }
-        return array_values(array_unique($this->_delimiter ?
-            $this->repeatedSubstringsDelimiter($suffixes) : $this->repeatedSubstrings($suffixes)));
+        return array_values(array_unique(
+            ($delimiter = $this->_suffixArray->getDelimiter()) ?
+            $this->repeatedSubstringsDelimiter($suffixes, $delimiter) : $this->repeatedSubstrings($suffixes)
+        ));
     }
 
     /**
@@ -81,12 +81,13 @@ class RepeatedSubstring implements TokenizerInterface
 
     /**
      * @param string[] $suffixes
+     * @param string $delimiter
      * @return string[] Repeated substrings.
      */
-    private function repeatedSubstringsDelimiter(array $suffixes)
+    private function repeatedSubstringsDelimiter(array $suffixes, $delimiter)
     {
         $result = [];
-        $delimiter_length = strlen($this->_delimiter) - 1;
+        $delimiter_length = strlen($delimiter) - 1;
         for ($a = 1; $a < count($suffixes); $a++) {
             $find_delimiter = true;
             $prev_line = &$suffixes[$a - 1];
@@ -102,7 +103,7 @@ class RepeatedSubstring implements TokenizerInterface
                     break;
                 }
                 if ($find_delimiter) {
-                    $next_delimiter = strpos($prev_line, $this->_delimiter, $b);
+                    $next_delimiter = strpos($prev_line, $delimiter, $b);
                     $find_delimiter = false;
                 }
                 if ($b === $next_delimiter) {
