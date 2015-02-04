@@ -14,7 +14,7 @@ namespace Jul\Lib\String\Tokenizer;
  * The delimiter is set at instantiation and cannot be changed.
  * @author Julien <youlweb@hotmail.com>
  */
-class Delimiter implements TokenizerInterface
+class Delimiter implements DelimiterInterface
 {
     /**
      * @var string
@@ -33,6 +33,12 @@ class Delimiter implements TokenizerInterface
         $this->_delimiter = $delimiter;
     }
 
+    /** {@inheritDoc} */
+    public function getDelimiter()
+    {
+        return $this->_delimiter;
+    }
+
     /**
      * Split the input string into an array of tokens.
      *
@@ -43,6 +49,6 @@ class Delimiter implements TokenizerInterface
      */
     public function tokenize($string)
     {
-        return array_values(array_filter(explode($this->_delimiter, $string), 'strlen'));
+        return array_values(array_filter(explode($this->getDelimiter(), $string), 'strlen'));
     }
 }
