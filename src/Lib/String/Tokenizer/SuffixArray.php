@@ -42,6 +42,12 @@ class SuffixArray implements SuffixArrayInterface
     }
 
     /** {@inheritDoc} */
+    public function getDelimiter()
+    {
+        return $this->_delimiter;
+    }
+
+    /** {@inheritDoc} */
     public function setSort($sort = SORT_STRING)
     {
         $this->_sort = $sort;

@@ -20,6 +20,7 @@ interface TokenizerInterface
      *
      * @param string $string
      * @return string[]
+     * @throws TokenizerException If something goes wrong.
      */
     public function tokenize($string);
 }

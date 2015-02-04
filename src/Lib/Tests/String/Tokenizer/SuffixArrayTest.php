@@ -16,6 +16,21 @@ use Jul\Lib\String\Tokenizer\SuffixArray;
  */
 class SuffixArrayTest extends \PHPUnit_Framework_TestCase
 {
+    public function testSetSort()
+    {
+        $suffixArray = new SuffixArray();
+        $this->assertEquals(['001', '01', '1'], $suffixArray->tokenize('001'));
+        $suffixArray->setSort(SORT_NATURAL);
+        $this->assertEquals(['1', '01', '001'], $suffixArray->tokenize('001'));
+    }
+
+    public function testSetSortUnknownFlagDoesNothing()
+    {
+        $suffixArray = new SuffixArray();
+        $suffixArray->setSort(45);
+        $this->assertEquals(['001', '01', '1'], $suffixArray->tokenize('001'));
+    }
+
     public function testTokenize()
     {
         $suffixArray = new SuffixArray();
@@ -42,13 +57,6 @@ class SuffixArrayTest extends \PHPUnit_Framework_TestCase
         $suffixArray = new SuffixArray($this->getDelimiter(' '));
         $this->assertEquals(['bar baz', 'baz', 'foo bar baz'],
             $suffixArray->setSort()->tokenize('foo bar baz'));
-    }
-
-    public function testTokenizeEmptyDelimiter()
-    {
-        $suffixArray = new SuffixArray($this->getDelimiter(''));
-        $this->assertEquals(['foo bar', 'oo bar', 'o bar', ' bar', 'bar', 'ar', 'r'],
-            $suffixArray->tokenize('foo bar'));
     }
 
     public function testTokenizeEmptyString()

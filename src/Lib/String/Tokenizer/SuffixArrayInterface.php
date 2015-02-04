@@ -16,6 +16,15 @@ namespace Jul\Lib\String\Tokenizer;
 interface SuffixArrayInterface extends TokenizerInterface
 {
     /**
+     * Return the delimiter used to truncate the suffixes.
+     *
+     * A suffix array can be created without a delimiter, thus this function
+     * may return null.
+     * @return DelimiterInterface|null
+     */
+    public function getDelimiter();
+
+    /**
      * Instruct the tokenizer to sort the suffix array in a specific way.
      *
      * Valid sorting flags can be found in the {@link http://php.net/manual/en/function.sort.php PHP sort function manual}.

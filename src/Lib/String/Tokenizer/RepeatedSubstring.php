@@ -20,7 +20,7 @@ namespace Jul\Lib\String\Tokenizer;
 class RepeatedSubstring implements TokenizerInterface
 {
     /**
-     * @var string
+     * @var DelimiterInterface
      */
     private $_delimiter;
 
@@ -28,6 +28,8 @@ class RepeatedSubstring implements TokenizerInterface
      * @var int
      */
     private $_min;
+
+
 
     /**
      * @param int $min_length Minimum length of the repeated substring.
