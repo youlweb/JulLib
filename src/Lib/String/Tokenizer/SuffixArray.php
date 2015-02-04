@@ -14,7 +14,7 @@ namespace Jul\Lib\String\Tokenizer;
  * Often considered an efficient alternative to suffix trees.
  * The output may be sorted alphabetically, for such application as finding
  * repeated substrings in a string.
- * A delimiter string can be provided to determine how suffixes should be
+ * A delimiter tokenizer can be provided to determine how suffixes should be
  * truncated. This allows to obtain suffix words for instance.
  * Suffix arrays are used in full text indices, data compression, semantic
  * analysis, spam filtering, and within the field of bioinformatics.
@@ -23,7 +23,7 @@ namespace Jul\Lib\String\Tokenizer;
 class SuffixArray implements TokenizerInterface
 {
     /**
-     * @var null
+     * @var DelimiterInterface
      */
     private $_delimiter;
 
@@ -37,10 +37,10 @@ class SuffixArray implements TokenizerInterface
      * @param string $delimiter Optionally use a delimiter to determine how
      * suffixes should be truncated.
      */
-    public function __construct($sort = false, $delimiter = null)
+    public function __construct(DelimiterInterface $delimiter = null, $sort = false)
     {
-        $this->_sort = $sort;
         $this->_delimiter = $delimiter;
+        $this->_sort = $sort;
     }
 
     /**
@@ -80,12 +80,12 @@ class SuffixArray implements TokenizerInterface
      */
     private function suffixArrayDelimiter($string)
     {
-        $delimiter = new Delimiter($this->_delimiter);
-        $tokens = $delimiter->tokenize($string); // Filter consecutive/lead/trail delimiters
+        $tokens = $this->_delimiter->tokenize($string);
+        $delimiter = $this->_delimiter->getDelimiter();
         $count = count($tokens);
         $suffixes = [$tokens[$count - 1]];
         for ($a = $count - 2; $a > -1; $a--) {
-            $suffixes[] = $tokens[$a] . $this->_delimiter . end($suffixes);
+            $suffixes[] = $tokens[$a] . $delimiter . end($suffixes);
         }
         if ($this->_sort) {
             return $suffixes;

@@ -8,6 +8,7 @@
  */
 namespace Jul\Lib\Tests\String\Tokenizer;
 
+use Jul\Lib\String\Tokenizer\Delimiter;
 use Jul\Lib\String\Tokenizer\SuffixArray;
 
 /**
@@ -24,28 +25,28 @@ class SuffixArrayTest extends \PHPUnit_Framework_TestCase
 
     public function testTokenizeDelimiter()
     {
-        $suffixArray = new SuffixArray(false, ', ');
+        $suffixArray = new SuffixArray($this->getDelimiter(', '));
         $this->assertEquals(['foo, bar, baz', 'bar, baz', 'baz'],
             $suffixArray->tokenize(', foo, bar, , baz, , '));
     }
 
     public function testTokenizeDelimiterNotFound()
     {
-        $suffixArray = new SuffixArray(false, '-');
+        $suffixArray = new SuffixArray($this->getDelimiter('-'));
         $this->assertEquals(['foo bar baz'],
             $suffixArray->tokenize('foo bar baz'));
     }
 
     public function testTokenizeDelimiterSorted()
     {
-        $suffixArray = new SuffixArray(true, ' ');
+        $suffixArray = new SuffixArray($this->getDelimiter(' '), true);
         $this->assertEquals(['bar baz', 'baz', 'foo bar baz'],
             $suffixArray->tokenize('foo bar baz'));
     }
 
     public function testTokenizeEmptyDelimiter()
     {
-        $suffixArray = new SuffixArray(false, '');
+        $suffixArray = new SuffixArray($this->getDelimiter(''));
         $this->assertEquals(['foo bar', 'oo bar', 'o bar', ' bar', 'bar', 'ar', 'r'],
             $suffixArray->tokenize('foo bar'));
     }
@@ -58,8 +59,17 @@ class SuffixArrayTest extends \PHPUnit_Framework_TestCase
 
     public function testTokenizeSorted()
     {
-        $suffixArray = new SuffixArray(true);
+        $suffixArray = new SuffixArray(null, true);
         $this->assertEquals([' bar', 'ar', 'bar', 'foo bar', 'o bar', 'oo bar', 'r'],
             $suffixArray->tokenize('foo bar'));
+    }
+
+    /**
+     * @param string $delimiter
+     * @return Delimiter
+     */
+    private function getDelimiter($delimiter)
+    {
+        return new Delimiter($delimiter);
     }
 }
