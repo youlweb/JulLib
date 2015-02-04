@@ -39,9 +39,9 @@ class SuffixArrayTest extends \PHPUnit_Framework_TestCase
 
     public function testTokenizeDelimiterSorted()
     {
-        $suffixArray = new SuffixArray($this->getDelimiter(' '), true);
+        $suffixArray = new SuffixArray($this->getDelimiter(' '));
         $this->assertEquals(['bar baz', 'baz', 'foo bar baz'],
-            $suffixArray->tokenize('foo bar baz'));
+            $suffixArray->setSort()->tokenize('foo bar baz'));
     }
 
     public function testTokenizeEmptyDelimiter()
@@ -59,9 +59,9 @@ class SuffixArrayTest extends \PHPUnit_Framework_TestCase
 
     public function testTokenizeSorted()
     {
-        $suffixArray = new SuffixArray(null, true);
+        $suffixArray = new SuffixArray();
         $this->assertEquals([' bar', 'ar', 'bar', 'foo bar', 'o bar', 'oo bar', 'r'],
-            $suffixArray->tokenize('foo bar'));
+            $suffixArray->setSort()->tokenize('foo bar'));
     }
 
     /**

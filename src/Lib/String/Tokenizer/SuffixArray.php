@@ -20,7 +20,7 @@ namespace Jul\Lib\String\Tokenizer;
  * analysis, spam filtering, and within the field of bioinformatics.
  * @author Julien <youlweb@hotmail.com>
  */
-class SuffixArray implements TokenizerInterface
+class SuffixArray implements SuffixArrayInterface
 {
     /**
      * @var DelimiterInterface
@@ -28,19 +28,24 @@ class SuffixArray implements TokenizerInterface
     private $_delimiter;
 
     /**
-     * @var bool
+     * @var int
      */
     private $_sort;
 
     /**
-     * @param bool $sort Optionally sort the output array in alphabetical order.
      * @param string $delimiter Optionally use a delimiter to determine how
      * suffixes should be truncated.
      */
-    public function __construct(DelimiterInterface $delimiter = null, $sort = false)
+    public function __construct(DelimiterInterface $delimiter = null)
     {
         $this->_delimiter = $delimiter;
+    }
+
+    /** {@inheritDoc} */
+    public function setSort($sort = SORT_STRING)
+    {
         $this->_sort = $sort;
+        return $this;
     }
 
     /**
@@ -55,8 +60,8 @@ class SuffixArray implements TokenizerInterface
             return [];
         }
         $suffixes = $this->_delimiter ? $this->suffixArrayDelimiter($string) : $this->suffixArray($string);
-        if ($this->_sort) {
-            sort($suffixes, SORT_STRING);
+        if (null !== $this->_sort) {
+            sort($suffixes, $this->_sort);
         }
         return $suffixes;
     }
@@ -87,7 +92,7 @@ class SuffixArray implements TokenizerInterface
         for ($a = $count - 2; $a > -1; $a--) {
             $suffixes[] = $tokens[$a] . $delimiter . end($suffixes);
         }
-        if ($this->_sort) {
+        if (null !== $this->_sort) {
             return $suffixes;
         }
         return array_reverse($suffixes);
