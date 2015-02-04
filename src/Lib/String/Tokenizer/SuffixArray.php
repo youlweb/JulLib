@@ -42,7 +42,7 @@ class SuffixArray implements SuffixArrayInterface
     }
 
     /** {@inheritDoc} */
-    public function getDelimiter()
+    public function getDelimiterTokenizer()
     {
         return $this->_delimiter;
     }

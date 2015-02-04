@@ -53,8 +53,8 @@ class RepeatedSubstring implements TokenizerInterface
             return [];
         }
         return array_values(array_unique(
-            ($delimiter = $this->_suffixArray->getDelimiter()) ?
-            $this->repeatedSubstringsDelimiter($suffixes, $delimiter) : $this->repeatedSubstrings($suffixes)
+            ($delimiter = $this->_suffixArray->getDelimiterTokenizer()) ?
+                $this->repeatedSubstringsDelimiter($suffixes, $delimiter->getDelimiter()) : $this->repeatedSubstrings($suffixes)
         ));
     }
 

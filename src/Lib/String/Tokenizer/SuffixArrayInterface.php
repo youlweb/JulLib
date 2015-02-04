@@ -22,7 +22,7 @@ interface SuffixArrayInterface extends TokenizerInterface
      * may return null.
      * @return DelimiterInterface|null
      */
-    public function getDelimiter();
+    public function getDelimiterTokenizer();
 
     /**
      * Instruct the tokenizer to sort the suffix array in a specific way.
